@@ -1,0 +1,141 @@
+<head th:insert="pages/fragments/admin_head"></head>
+<div class="container body">
+<div class="main_container">
+<div th:insert="pages/admin :: left_col"></div>
+<div th:insert="pages/admin :: top_nav"></div>
+
+		<!-- Page Content -->
+		<div class="right_col" role="main">
+			<div class="">
+				<div class="page-title">
+					<div class="title_left"></div>
+					<div class="title_right"></div>
+				</div>
+				<div class="clearfix"></div>
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="x_panel">
+							<div class="x_title">
+								<ul class="nav navbar-left panel_toolbox">
+									<li>
+										<div class="title_left">
+											<h3>
+												<strong>Users</strong> <small> Manage Users & Groups</small>
+											</h3>
+										</div>
+									</li>
+								</ul>
+								<ul class="nav navbar-right panel_toolbox">
+									<li style="padding: 0px; margin-top: 8px">
+										<a 	class="btn btn-success"
+											data-toggle="modal" data-target="#addnewuser"
+											style="color: white;"><i class="fa fa-plus" style="font-weight: 100;"></i> New User</a>	
+											<span id="addUserError"  class="hidden" th:text="${addUserError}"></span>
+									</li>
+									<li style="padding: 0px; margin-top: 8px">
+										<a th:href="@{/admin/uploadcsv}" class="btn btn-success" style="color: white;"><i class="fa fa-users" style="font-weight: 100;"></i> Bulk Upload</a>
+									</li>
+								</ul>
+								<div class="clearfix"></div>
+							</div>
+							<div class="x_content">
+								<div class="table-responsive">
+									<table id="datatable" class="userspage table table-striped table-bordered" style="width: 100%">
+										  <thead>
+								            <tr class="headings">
+								                <th class="columnhidden">UserId</th>
+								                <th class="column-title">Name</th>
+								                <th class="column-title">Employee Id</th>								                
+								            	<th class="column-title">User Group</th>
+								            	<th class="column-title">Role</th>
+								                <th class="column-title">Status</th>
+							                    <th class="column-title">Action</th>  
+								            </tr>
+								        	</thead>
+									  	  <tbody >
+									       	<tr th:each="user : ${userRoleUsersList}">
+											  	  <td class="columnhidden"  th:text="${user.USER_ID}"></td>
+											  	  <td th:text="${user.firstname} + ' ' + ${user.lastname}"></td>
+											  	  <td th:text="${user.username}"></td>	     
+											      <td th:text="${user.USER_GROUP}"></td>											   
+											      <td th:each="userRole : ${user.roles}" th:text="${userRole.USER_ROLE}"></td>
+											      <td style="text-align: center"> 
+											      	<div th:if="${user?.USER_STATUS != null && user?.USER_STATUS == 'active'}">
+											      		<span style="height: 20px; width: 20px; background-color: green; border-radius: 50%; display: inline-block"></span>
+											      	</div>
+											      	<div th:if="${user?.USER_STATUS == null || user?.USER_STATUS != 'active'}">
+											      		<span style="height: 20px; width: 20px; background-color: red; border-radius: 50%; display: inline-block"></span>
+											      	</div>
+											      </td> 
+											   	  <td>
+												   	  <!--  <a type="button" class="btn btn-primary editUsersBtn" data-toggle="modal" data-target="#edituserdetails" 
+												     id="editUsers">Edit User Details</a>-->
+												     <a th:href="@{'/edituser/' + ${user.USER_ID}}" type="button" class="btn btn-primary editUsersBtn"style="color: white;"><i class="fa fa-edit" style="font-weight: 100;"></i> Edit</a>	
+											   	</td>
+									      	</tr>
+									      </tbody>
+									  </table> 
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			
+				
+			<!-- Event History - All -->
+				<div class="col-md-12">
+						<h3 class="text-muted font-13 m-b-30">
+							Events History - All
+						</h3>
+						<script>
+							$(document).ready(function() {
+								$('#logs_datatables_usersHistory_all')
+								.DataTable({
+									"order" : [3, 'desc']
+								});			
+								
+								var addUserErrorValue = $("#addUserError").text();
+								if(addUserErrorValue == "error"){
+									$("#addnewuser").modal('show');
+								}
+							});
+							
+							var userStat = $("#user-status-val").text();
+							if(userStat == "active"){
+								$("#user-status-col").css('background-color', 'green');
+							}else {
+								$("#user-status-col").css('background-color', 'red');
+							}
+						</script>
+						<table id="logs_datatables_usersHistory_all" style="width: 100%"
+							class="table table-striped table-bordered">
+							<thead>
+								<tr>
+									<th class="columnhidden"></th>
+									<th>Activity</th>
+									<th>Altered By</th>
+									<th>Timestamp</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="userHistory : ${userHistoryList}">
+									<td class="columnhidden"></td>
+									<td th:text="${userHistory.user_hist_msg}">
+									<td th:text="${userHistory.user_hist_user}">
+									<td th:text="${#calendars.format(userHistory.timestamp,'(dd MMM YYYY) h:mm:ss a')}"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				<!-- Event History - All -->
+					
+				</div>
+			</div><!-- div.right_col -->
+	<!-- /page content -->
+</div><!-- div.main_container -->
+</div><!-- div.container_body -->
+<div th:insert="pages/admin :: footer"></div>
+<div th:replace="fragments/modals/editusers"></div>
+<div th:replace="fragments/modals/adduser"></div>
+<div th:replace="pages/fragments/admin_foot"></div>

@@ -1,0 +1,35 @@
+<!-- The Modal -->
+<div class="modal" id="umploadImage">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Modal Heading</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form th:action="@{/uploadimage}" method="post" enctype="multipart/form-data">
+                    <div >
+                        <p>Changed By
+                            <span>
+                                <input type="text" name="created_by" th:value="${lastsavedby}"></input>
+                            </span>
+                        </p>
+                    </div>
+                    <input type="text" id="imageaccount_id" name="ACCOUNT_ID"></input>
+                    <input type="text" id="imageaccount_name" name="ACCOUNT_NAME"></input>
+                    <input class="form-control" type="text" id="imagepath_container" name="ACCOUNT_IMAGE_PATH"></input>
+                    <input type="file" name="file" onchange="readUrl(this);" id="fileFetcher"></input>
+                    <span>
+                        <button id="imageUploaderBtn">confirm</button>
+                    </span>
+                </form>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

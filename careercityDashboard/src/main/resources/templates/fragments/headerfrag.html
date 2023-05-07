@@ -1,0 +1,32 @@
+<!--
+Fragmentation of Header on top every page with the user name login
+-->
+<style>
+h1 {
+    color: #4b286d;
+}
+
+h4 {
+    color: #4b286d;
+}
+
+.package {
+    background-color: #f4f1ef;
+}
+</style>
+<div class="package">
+    <div class="btn-group" role="group" aria-label="Controls" hidden="true">
+        <button type="button" class="btn btn-default toggle-sidebar">Toggle sidebar</button>
+    </div>
+    <h1>Career City Admin</h1>
+    <!--
+    <h2 th:text="${#authentication.getPrincipal().getUsername()}" id="username" ></h2>
+    -->
+    <div align="right" id="userdetails">
+        <h4>Welcome</h4>
+        <span th:text="${#authentication.getPrincipal().getFirstname()}"></span>
+        <span th:text="${#authentication.getPrincipal().getLastname()}"></span>
+    </div>
+    <br/>
+</div>
+<hr/>

@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!-- Meta, title, CSS, favicons, etc. -->
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Career City</title>
+<link rel="shortcut icon" type="image/png"
+	th:src="@{/images/cc-logo.png}" />
+<!-- Bootstrap -->
+<link
+	th:href="@{/lib/gentelella-1.4.0/vendors/bootstrap/dist/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<!-- Font Awesome -->
+<link
+	th:href="@{/lib/gentelella-1.4.0/vendors/font-awesome/css/font-awesome.min.css}"
+	rel="stylesheet" />
+<!-- NProgress -->
+<link th:href="@{/lib/gentelella-1.4.0/vendors/nprogress/nprogress.css}"
+	rel="stylesheet" />
+<!-- bootstrap-daterangepicker -->
+<link
+	th:href="@{/lib/gentelella-1.4.0/vendors/bootstrap-daterangepicker/daterangepicker.css}"
+	rel="stylesheet" />
+<!-- bootstrap-progressbar -->
+<link
+	th:href="@{/lib/gentelella-1.4.0/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css}"
+	rel="stylesheet" />
+<!-- DataTables  -->
+<link
+	th:href="@{/lib/gentelella-1.4.0/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css}"
+	rel="stylesheet" />
+<!-- Custom Theme Style -->
+<link th:href="@{/lib/gentelella-1.4.0/build/css/custom.min.css}"
+	rel="stylesheet" />
+<!-- Multiple Select -->
+<link
+	th:href="@{/lib/gentelella-1.4.0/vendors/multiple-select-1.5.2/multiple-select-1.5.2/dist/multiple-select.min.css}"
+	rel="stylesheet" />
+<!-- Custom Career City Theme Style -->
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/index.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/admin.css}" />
+<!-- AJAX Libraries -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+</head>
+<body class="nav-md">
+	<div class="container body">
+		<div class="main_container">
+			<div class="col-md-3 left_col" th:fragment="left_col">
+				<div class="left_col scroll-view">
+					<div class="navbar nav_title" style="border: 0;">
+						<a href="/careercitydashboard/admin/reporting" class="site_title">
+							<img alt="CC-logo" th:src="@{/images/cc-logo.png}" width="50px" />
+							<span>C<small>AREER</small> C<small>ITY</small></span>
+						</a>
+					</div>
+					<div class="clearfix"></div>
+					<br />
+					<!-- menu profile quick info -->
+					<div class="profile clearfix">
+						<div class="profile_pic">
+							<img
+								th:src="@{/lib/gentelella-1.4.0/production/images/user-icon.jpg}"
+								alt="..." class="img-circle profile_img" />
+						</div>
+						<div class="profile_info">
+							<span>Welcome!</span>
+							<h2>
+								<span th:text="${#authentication.getPrincipal().getFirstname()}"></span>
+								<span th:text="${#authentication.getPrincipal().getLastname()}"></span>
+							</h2>
+						</div>
+					</div>
+					<!-- /menu profile quick info -->
+					<hr
+						style="margin-left: 1.5rem; margin-right: 1.5rem; border-color: #4B286D;" />
+					<!-- sidebar menu -->
+					<div id="sidebar-menu"
+						class="main_menu_side hidden-print main_menu">
+						<div class="menu_section">
+							<h3>General</h3>
+							<ul class="nav side-menu">
+								<li><a th:href="@{/admin/reporting}"> <i
+										class="fa fa-line-chart"></i> Reporting
+								</a></li>
+								<li><a th:href="@{/admin/accounts}"> <i
+										class="fa fa-edit"></i> Accounts
+								</a></li>
+								<li><a th:href="@{/admin/positions}"> <i
+										class="fa fa-desktop"></i> Positions
+								</a></li>
+								<li><a th:href="@{/sites}"> <i class="fa fa-map-marker"></i>
+										Sites
+								</a></li>
+								<li><a th:href="@{/users/superuser-role}"
+									class="superUserRoleLink"> <i class="fa fa-users"></i>
+										Users
+								</a></li>
+								<!-- 
+                                    <li sec:authorize="hasRole('ROLE_SUPERUSER')" class="dropdown">
+                                        <a href="#">
+                                            <i class="fa fa-users"></i> Users &#9662;
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a th:href="@{/users/superuser-role}" class="superUserRoleLink"> Superuser Role </a>
+                                            </li>
+                                            <li>
+                                                <a th:href="@{/users/user-role}" class="userRoleLink"> User role </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    -->
+							</ul>
+						</div>
+					</div>
+					<!-- /sidebar menu -->
+					<!-- /menu footer buttons -->
+				</div>
+			</div>
+			<!-- top navigation -->
+			<div class="top_nav" th:fragment="top_nav">
+				<div class="nav_menu">
+					<nav>
+						<div class="nav toggle">
+							<a id="menu_toggle"> <i class="fa fa-bars"></i>
+							</a>
+						</div>
+						<ul class="nav navbar-nav navbar-right">
+							<li class=""><a href="javascript:;"
+								class="user-profile dropdown-toggle" data-toggle="dropdown"
+								aria-expanded="false"> <img
+									th:src="@{/lib/gentelella-1.4.0/production/images/user-icon2.jpg}"
+									alt="profile" /> <span
+									th:text="${#authentication.getPrincipal().getFirstname()}"></span>
+									<span th:text="${#authentication.getPrincipal().getLastname()}"></span>
+									<span class=" fa fa-angle-down"></span>
+							</a>
+								<ul class="dropdown-menu dropdown-usermenu pull-right">
+									<li><a th:href="@{/logout}"> <i
+											class="fa fa-sign-out pull-right"></i> Log Out
+									</a></li>
+								</ul></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+			<!-- /top navigation -->
+			<!-- page content -->
+			<div class="right_col" role="main">
+				<div class="">
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12" style="height: 100%">
+							<div class="x_panel">
+								<div class="x_title">
+									<div class="title_left">
+										<h3>
+											<strong>Reporting</strong>
+										</h3>
+									</div>
+									<!--
+                                        <ul class="nav navbar-right panel_toolbox">
+                                            <li>
+                                                <a class="collapse-link">
+                                                    <iclass="fa fa-chevron-up"></i>
+                                                </a>
+                                            </li>
+                                            <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle"data-toggle="dropdown" role="button" aria-expanded="false">
+                                                    <i class="fa fa-wrench"></i>
+                                                </a>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li>
+                                                        <a href="#">Settings 1</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Settings 2</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a class="close-link">
+                                                    <i class="fa fa-close"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        -->
+									<div class="clearfix"></div>
+								</div>
+								<div class="x_content">
+									<div class="" role="tabpanel" data-example-id="togglable-tabs">
+										<ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+											<li role="presentation" class="active"><a
+												href="#tab_content1" id="home-tab" role="tab"
+												data-toggle="tab" aria-expanded="true">Usage Report</a></li>
+											<li role="presentation" class=""><a href="#tab_content2"
+												role="tab" id="profile-tab" data-toggle="tab"
+												aria-expanded="false">Career Survey Results</a></li>
+											<li role="presentation" class=""><a href="#tab_content3"
+												role="tab" id="profile-tab2" data-toggle="tab"
+												aria-expanded="false">Career City Clicks</a></li>
+										</ul>
+										<div id="myTabContent"
+											class="tab-content usageReportMainContent">
+											<!-- ====================== Usage Report TAB =================== -->
+											<div role="tabpanel" class="tab-pane fade active in"
+												id="tab_content1" aria-labelledby="home-tab">
+												<div class="loading"></div>
+												<div class="hidden">
+													<input class="fromDate_usageReport" type="text" value="" />
+													<input class="toDate_usageReport" type="text" value="" />
+													<input class="site_usageReport" type="text" value="" /> <input
+														class="functionalArea_usageReport" type="text" value="" />
+													<input class="manager_usageReport" type="text" value="" />
+													<input class="supervisor_usageReport" type="text" value="" />
+												</div>
+												<!--
+                                                    <div class="row filterRow1_mainContainer">
+                                                        <div class="ytdUserCountsMainContainer">
+                                                            <div class="ytdUserCounts_container">
+                                                                <div class="ytdUserCounts_wrapper">
+                                                                    <h6>
+                                                                        <span style="color: #555;">YTD USER COUNT</span>
+                                                                        <br />
+                                                                        <span class="ytdUserCounts_value">199</span>
+                                                                    </h6>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="dateFunctionalFilter_mainContainer">
+                                                            <div class="filterRow1_usage">
+                                                                <div class="datepicker_usage">
+                                                                    <div id="reportrange_right_usageTab" style="width: 100%; background: #fff; cursor: pointer; padding: 2px 5px; border: 1px solid #ccc; border-radius: 20px">
+                                                                        <i class="fa fa-calendar"></i>&nbsp;
+                                                                        <span></span>
+                                                                        <i class="fa fa-caret-down"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="dropdown_container_functionalArea">
+                                                                    <select class="select dropdown_selection_functionalArea" multiple="multiple" placeholder="Functional Area">
+                                                                        <option class="dropdownOption selectOption_functionalArea" value="1">Functional Area</option> 
+                                                                    </select>
+                                                                </div> 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    -->
+												<div class="row ytdUserCountsMainContainer">
+													<div class="ytdUserCounts_container">
+														<div class="ytdUserCounts_wrapper">
+															<h6>
+																<span style="color: #555;">YTD USER COUNT</span> <br />
+																<span class="ytdUserCounts_value">199</span>
+															</h6>
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="filterRow1">
+														<div class="datepicker_usage">
+															<div id="reportrange_right_usageTab"
+																style="width: 100%; background: #fff; cursor: pointer; padding: 2px 5px; border: 1px solid #ccc; border-radius: 20px">
+																<i class="fa fa-calendar"></i>&nbsp; <span></span> <i
+																	class="fa fa-caret-down"></i>
+															</div>
+														</div>
+														<div class="dropdown_container_functionalArea">
+															<select class="select dropdown_selection_functionalArea"
+																multiple="multiple" placeholder="Functional Area">
+																<!--
+                                                                    <option class="dropdownOption selectOption_functionalArea" value="1">Functional Area</option>
+                                                                    -->
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="filterRow2">
+														<div class="dropdown_container_manager">
+															<select class="dropdown_selection_manager"
+																multiple="multiple"
+																placeholder="Manager of Immediate Manager">
+																<!--
+                                                                    <option class="dropdownOption selectOption_manager" value="1">Manager</option>
+                                                                    -->
+															</select>
+														</div>
+														<div class="dropdown_container_supervisor">
+															<select class="dropdown_selection_supervisor"
+																multiple="multiple" placeholder="Immediate Manager">
+																<option class="dropdownOption selectOption_supervisor"
+																	value="1">Supervisor</option>
+															</select>
+														</div>
+														<div class="dropdown_container_site">
+															<select class="dropdown_selection_site"
+																multiple="multiple" placeholder="Site">
+																<!--
+                                                                    <option class="dropdownOption selectOption_site" value="1">Site</option>
+                                                                    -->
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="row reportTitleRow">
+													<div class="reportTitleBar">
+														<span class="reportTitleText">USAGE REPORT -
+															DIRECTORY</span>
+													</div>
+												</div>
+
+												<div class="row"
+													style="padding-bottom: 5px; margin-bottom: 5px;">
+													<div class="col-lg-12 col-md-12 col-sm-12"
+														style="margin-bottom: 2rem;"></div>
+													<div class="col-lg-12 col-md-12 col-sm-12"
+														style="margin-bottom: 2rem;">
+														<div class="demo-container" style="height: 280px">
+															<div id="usageTraffic" class="demo-placeholder"></div>
+														</div>
+														<br />
+														<h2 style="text-align: center; font-size: 24px;">
+															<strong>USER DEMOGRAPHICS</strong>
+														</h2>
+													</div>
+													<div class="col-lg-12 col-md-12 col-sm-12"
+														style="margin-bottom: 2rem;">
+														<div class="row">
+															<!--                                                                <div class="col-md-3">-->
+															<!--                                                                    <div class="reportItem_container">-->
+															<!--                                                                        <div class="reportItem_title">-->
+															<!--                                                                            <h5 style="margin: 0">-->
+															<!--                                                                                <span style="font-weight: bold; color: #555;">AGE GROUPS  </span>-->
+															<!--                                                                                <br /><small>by Generation Type</small>-->
+															<!--                                                                            </h5>-->
+															<!--                                                                        </div>-->
+															<!--                                                                        <div class="reportItem_body">-->
+															<!--                                                                            <div class="reportItem_chart canvasContainer_usageByuserGroup"></div>-->
+															<!--                                                                            <div class="reportItem_label_mainContainer">-->
+															<!--                                                                                <div class="reportItem_label_subContainer labelContainer_usageByuserGroup"></div>-->
+															<!--                                                                            </div>-->
+															<!--                                                                        </div>-->
+															<!--                                                                    </div>-->
+															<!--                                                                </div>-->
+															<!--                                                                <div class="col-md-3">-->
+															<!--                                                                    <div class="reportItem_container">-->
+															<!--                                                                        <div class="reportItem_title">-->
+															<!--                                                                            <h5 style="margin: 0">-->
+															<!--                                                                                <span style="font-weight: bold; color: #555;">DIVERSITY</span>-->
+															<!--                                                                                <br /><small>by Gender</small>-->
+															<!--                                                                            </h5>-->
+															<!--                                                                        </div>-->
+															<!--                                                                        <div class="reportItem_body">-->
+															<!--                                                                            <div class="reportItem_chart canvasContainer_usageByGender"></div>-->
+															<!--                                                                            <div class="reportItem_label_mainContainer">-->
+															<!--                                                                                <div class="reportItem_label_subContainer labelContainer_usageByGender"></div>-->
+															<!--                                                                            </div>-->
+															<!--                                                                        </div>-->
+															<!--                                                                    </div>-->
+															<!--                                                                </div>-->
+															<div class="col-md-6">
+																<div class="reportItem_container">
+
+																	<div class="reportItem_title">
+																		<div class="col">
+																			<h5 style="margin: 0">
+																				<span style="font-weight: bold; color: #555;">USER
+																					PER SITE </span> <br /> <small>by Location in
+																					Percentage</small>
+																			</h5>
+																		</div>
+
+
+																	</div>
+																	<div class="reportItem_body">
+																		<div
+																			class="reportItem_chart canvasContainer_usageBySite"></div>
+																		<div class="reportItem_label_mainContainer">
+																			<div
+																				class="reportItem_label_subContainer labelContainer_usageBySite"></div>
+
+																		</div>
+																		<div>
+																			<button class="btn btn-sm"
+																				onClick="exportCSV_usageBySite('UsageBySite.csv')">Export</button>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-md-6">
+																<div class="reportItem_container">
+																	<div class="reportItem_title">
+																		<h5 style="margin: 0">
+																			<span style="font-weight: bold; color: #555;">USER
+																				PROFILE </span> <br /> <small>by Job Level</small>
+																		</h5>
+																	</div>
+																	<div class="reportItem_body">
+																		<div
+																			class="reportItem_chart canvasContainer_usageByJobLevel"></div>
+																		<div class="reportItem_label_mainContainer">
+																			<div
+																				class="reportItem_label_subContainer labelContainer_usageByJobLevel"></div>
+																		</div>
+																		<div>
+																			<button class="btn btn-sm"
+																				onClick="exportCSV_usageByJobLevel('UsageByJobLevel.csv')">Export</button>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- ====================== Career Survey Results TAB =================== -->
+											<div role="tabpanel" class="tab-pane fade" id="tab_content2"
+												aria-labelledby="profile-tab">
+												<div class="loading"></div>
+												<div class="hidden">
+													<input class="fromDate_surveyResult" type="text" value="" />
+													<input class="toDate_surveyResult" type="text" value="" />
+													<input class="site_surveyResult" type="text" value="" /> <input
+														class="functionalArea_surveyResult" type="text" value="" />
+													<input class="manager_surveyResult" type="text" value="" />
+													<input class="supervisor_surveyResult" type="text" value="" />
+												</div>
+												<div class="row surveyCountsMainContainer">
+													<div class="ytdTidsCountsMainContainer">
+														<div class="ytdTidsCounts_container">
+															<div class="ytdTidsCounts_wrapper">
+																<h6>
+																	<span style="color: #555;">YTD TIDS HIRES</span> <br />
+																	<span class="ytdTidsCounts_value"></span>
+																</h6>
+															</div>
+														</div>
+													</div>
+													<div class="ytdSupportCountsMainContainer">
+														<div class="ytdSupportCounts_container">
+															<div class="ytdSupportCounts_wrapper">
+																<h6>
+																	<span style="color: #555;">YTD SUPPORT HIRES</span> <br />
+																	<span class="ytdSupportCounts_value"></span>
+																</h6>
+															</div>
+														</div>
+													</div>
+													<div class="ytdCcoCountsMainContainer">
+														<div class="ytdCcoCounts_container">
+															<div class="ytdCcoCounts_wrapper">
+																<h6>
+																	<span style="color: #555;">YTD CCO HIRES</span> <br />
+																	<span class="ytdCcoCounts_value"></span>
+																</h6>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="filterRow1-surveyResult">
+														<div class="datepicker_usage">
+															<div id="reportrange_right_surveyResult"
+																style="width: 100%; background: #fff; cursor: pointer; padding: 2px 5px; border: 1px solid #ccc; border-radius: 20px">
+																<i class="fa fa-calendar"></i>&nbsp; <span></span> <i
+																	class="fa fa-caret-down"></i>
+															</div>
+														</div>
+														<div
+															class="dropdown_container_functionalArea-surveyResult">
+															<select
+																class="select dropdown_selection_functionalArea-surveyResult"
+																multiple="multiple" placeholder="Functional Area">
+																<!--
+                                                                    <option class="dropdownOption selectOption_functionalArea" value="1">Functional Area</option>
+                                                                    -->
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="filterRow2-surveyResult">
+														<div class="dropdown_container_manager-surveyResult">
+															<select class="dropdown_selection_manager-surveyResult"
+																multiple="multiple"
+																placeholder="Manager of Immediate Manager">
+																<!--
+                                                                      <option class="dropdownOption selectOption_manager" value="1">Manager</option>
+                                                                      -->
+															</select>
+														</div>
+														<div class="dropdown_container_supervisor-surveyResult">
+															<select
+																class="dropdown_selection_supervisor-surveyResult"
+																multiple="multiple" placeholder="Immediate Manager">
+																<option
+																	class="dropdownOption selectOption_supervisor-surveyResult"
+																	value="1">Supervisor</option>
+															</select>
+														</div>
+														<div class="dropdown_container_site-surveyResult">
+															<select class="dropdown_selection_site-surveyResult"
+																multiple="multiple" placeholder="Site">
+																<!--
+                                                                    <option class="dropdownOption selectOption_site" value="1">Site</option>
+                                                                    -->
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="row reportTitleRow">
+													<div class="reportTitleBar">
+														<span class="reportTitleText">CAREER SURVEY RESULTS</span>
+													</div>
+												</div>
+												<div class="row"
+													style="padding-bottom: 5px; margin-bottom: 5px; display: inline-block;">
+													<div class="row surverResultMainWrapper"
+														style="margin-top: 20px; height: 250px; display: contents">
+														<div class="siteWrapper col-md-3 col-sm-6 col-xs-12"
+															style="height: 250px">
+															<div class="categoryTitle">
+																<h5 style="margin: 0">
+																	<span style="font-weight: bold; color: #555;">PREFERRED
+																		SITE</span> <br /> <small>by Location</small>
+																</h5>
+															</div>
+															<div class="categoryBody" style="margin-top: 18px">
+																<div class="prefSiteWrapper">
+																	<!--
+                                                                        <div id="graph_bar_prefSite" style="width:100%; height:200px;"></div>
+                                                                        -->
+																</div>
+															</div>
+														</div>
+														<div class="ccoWrapper col-md-3 col-sm-6 col-xs-12">
+															<div class="reportItem_container">
+																<div class="reportItem_title">
+																	<h5 style="margin: 0">
+																		<span style="font-weight: bold; color: #555;">PREFERRED
+																			TYPE OF WORK (CCO) </span> <br /> <small>Preferred
+																			work type of team members according to clicks.</small>
+																	</h5>
+																</div>
+																<div class="reportItem_body" style="margin-top: 23px">
+																	<div
+																		class="reportItem_chart canvasContainer_surveyResult_cco"></div>
+																	<div class="reportItem_label_mainContainer">
+																		<div
+																			class="reportItem_label_subContainer labelContainer_surveyResult_cco"></div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="tidsWrapper col-md-3 col-sm-6 col-xs-12">
+															<div class="categoryTitle">
+																<h5 style="margin: 0">
+																	<span style="font-weight: bold; color: #555;">PREFERRED
+																		TYPE OF WORK (TIDS) </span> <br /> <small>Preferred
+																		work type of team members according to clicks.</small>
+																</h5>
+															</div>
+															<div class="categoryBody">
+																<div class="survey_work_tids_div">
+																	<table class="table survey_work_tids_table">
+																		<thead>
+																			<tr>
+																				<th>SITE</th>
+																				<th>COUNT</th>
+																			</tr>
+																		</thead>
+																		<tbody class="survey_work_tids_tbody"></tbody>
+																	</table>
+																</div>
+															</div>
+														</div>
+														<div class="suppWrapper col-md-3 col-sm-6 col-xs-12">
+															<div class="categoryTitle">
+																<h5 style="margin: 0">
+																	<span style="font-weight: bold; color: #555;">PREFERRED
+																		TYPE OF WORK (SUPPORT)</span> <br /> <small>Most
+																		clicked/selected departments by team members in
+																		Support & TIDS.</small>
+																</h5>
+															</div>
+															<div class="categoryBody">
+																<div class="survey_work_support_div">
+																	<table class="table survey_work_support_table">
+																		<thead>
+																			<tr>
+																				<th>DEPARTMENT</th>
+																				<th>COUNT</th>
+																			</tr>
+																		</thead>
+																		<tbody class="survey_work_support_tbody"></tbody>
+																	</table>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="row"
+														style="margin-top: 50px; height: 250px; display: contents">
+														<div class="bpoExpWrapper col-md-3 col-sm-6 col-xs-12"
+															style="height: 250px; margin-top: 12px">
+															<div class="reportItem_container">
+																<div class="reportItem_title">
+																	<h5 style="margin: 0">
+																		<span style="font-weight: bold; color: #555;">BPO
+																			EXPERIENCE </span> <br /> <small>by Duration</small>
+																	</h5>
+																</div>
+																<div class="reportItem_body">
+																	<div
+																		class="reportItem_chart canvasContainer_surveyResult_bpoExp"></div>
+																	<div class="reportItem_label_mainContainer">
+																		<div
+																			class="reportItem_label_subContainer labelContainer_surveyResult_bpoExp"></div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="schedWrapper col-md-3 col-sm-6 col-xs-12"
+															style="margin-top: 12px">
+															<div class="reportItem_container">
+																<div class="reportItem_title">
+																	<h5 style="margin: 0">
+																		<span style="font-weight: bold; color: #555;">PREFERRED
+																			WORK SCHEDULE </span> <br /> <small>Time/Day</small>
+																	</h5>
+																</div>
+																<div class="reportItem_body">
+																	<div
+																		class="reportItem_chart canvasContainer_surveyResult_sched"></div>
+																	<div class="reportItem_label_mainContainer">
+																		<div
+																			class="reportItem_label_subContainer labelContainer_surveyResult_sched"></div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="studyWrapper col-md-3 col-sm-6 col-xs-12"
+															style="margin-top: 12px">
+															<div class="reportItem_container">
+																<div class="reportItem_title">
+																	<h5 style="margin: 0">
+																		<span style="font-weight: bold; color: #555;">FIELD
+																			OF STUDY </span> <br /> <small>Educational
+																			Background</small>
+																	</h5>
+																</div>
+																<div class="reportItem_body">
+																	<div
+																		class="reportItem_chart canvasContainer_surveyResult_study"></div>
+																	<div class="reportItem_label_mainContainer">
+																		<div
+																			class="reportItem_label_subContainer labelContainer_surveyResult_study"></div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="skillsWrapper col-md-3 col-sm-6 col-xs-12"
+															style="margin-top: 12px">
+															<div class="reportItem_container">
+																<div class="reportItem_title">
+																	<h5 style="margin: 0">
+																		<span style="font-weight: bold; color: #555;">ADDITIONAL
+																			SKILLS </span> <br /> <small>by Job Level</small>
+																	</h5>
+																</div>
+																<div class="reportItem_body">
+																	<div
+																		class="reportItem_chart canvasContainer_surveyResult_skills"></div>
+																	<div class="reportItem_label_mainContainer">
+																		<div
+																			class="reportItem_label_subContainer labelContainer_surveyResult_skills"></div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- ====================== Career City Clicks TAB =================== -->
+											<div role="tabpanel" class="tab-pane fade" id="tab_content3"
+												aria-labelledby="profile-tab">
+												<div class="loading"></div>
+												<div class="hidden">
+													<input class="fromDate_clicks" type="text" value="" /> <input
+														class="toDate_clicks" type="text" value="" /> <input
+														class="site_clicks" type="text" value="" /> <input
+														class="functionalArea_clicks" type="text" value="" /> <input
+														class="manager_clicks" type="text" value="" /> <input
+														class="supervisor_clicks" type="text" value="" />
+												</div>
+												<div class="row">
+													<div class="filterRow1-clicks">
+														<div class="datepicker_usage">
+															<div id="reportrange_right_ccClicksTab"
+																style="width: 100%; background: #fff; cursor: pointer; padding: 2px 5px; border: 1px solid #ccc; border-radius: 20px">
+																<i class="fa fa-calendar"></i>&nbsp; <span></span> <i
+																	class="fa fa-caret-down"></i>
+															</div>
+														</div>
+														<div class="dropdown_container_functionalArea-clicks">
+															<select
+																class="select dropdown_selection_functionalArea-clicks"
+																multiple="multiple" placeholder="Functional Area">
+																<!--
+                                                                    <option class="dropdownOption selectOption_functionalArea" value="1">Functional Area</option>
+                                                                    -->
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="filterRow2-clicks">
+														<div class="dropdown_container_manager-clicks">
+															<select class="dropdown_selection_manager-clicks"
+																multiple="multiple"
+																placeholder="Manager of Immediate Manager">
+																<!--
+                                                                  <option class="dropdownOption selectOption_manager" value="1">Manager</option>
+                                                                  -->
+															</select>
+														</div>
+														<div class="dropdown_container_supervisor-clicks">
+															<select class="dropdown_selection_supervisor-clicks"
+																multiple="multiple" placeholder="Immediate Manager">
+																<option
+																	class="dropdownOption selectOption_supervisor-clicks"
+																	value="1">Supervisor</option>
+															</select>
+														</div>
+														<div class="dropdown_container_site-clicks">
+															<select class="dropdown_selection_site-clicks"
+																multiple="multiple" placeholder="Site">
+																<!--
+                                                                    <option class="dropdownOption selectOption_site" value="1">Site</option>
+                                                                    -->
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="row reportTitleRow">
+													<div class="reportTitleBar">
+														<span class="reportTitleText">CAREER CITY CLICKS</span>
+													</div>
+												</div>
+												<div class="row"
+													style="padding-bottom: 5px; margin-bottom: 5px;">
+													<div class="col-lg-12 col-md-12 col-sm-12"
+														style="margin-bottom: 2rem;"></div>
+													<div class="col-lg-12 col-md-12 col-sm-12"
+														style="margin-bottom: 2rem;">
+														<div class="row"
+															style="text-align: center; height: 280px;">
+															<div class="col-md-3">
+																<h5 style="margin: 0">
+																	<span style="font-weight: bold; color: #555;">PREFERRED
+																		SITE</span> <br /> <small>based on Clicks</small>
+																</h5>
+																<div class="clicks_pref_site_div">
+																	<table class="table clicks_pref_site_table">
+																		<thead>
+																			<tr>
+																				<th>SITE</th>
+																				<th>COUNT</th>
+																			</tr>
+																		</thead>
+																		<tbody class="clicks_pref_site_tbody"></tbody>
+																	</table>
+																</div>
+															</div>
+															<div class="col-md-3">
+																<h5 style="margin: 0">
+																	<span style="font-weight: bold; color: #555;">PREFERRED
+																		PROGRAMS</span> <br /> <small>based on Clicks</small>
+																</h5>
+																<div class="clicks_pref_programs_div">
+																	<table class="table clicks_pref_programs_table">
+																		<thead>
+																			<tr>
+																				<th>ACCOUNT NAME</th>
+																				<th>COUNT</th>
+																			</tr>
+																		</thead>
+																		<tbody class="clicks_pref_programs_tbody"></tbody>
+																	</table>
+																</div>
+															</div>
+															<div class="col-md-3">
+																<h5 style="margin: 0">
+																	<span style="font-weight: bold; color: #555;">IN
+																		DEMAND BUSINESS TYPES</span> <br /> <small>based on
+																		Clicks</small>
+																</h5>
+																<div class="clicks_bus_types_div">
+																	<table class="table clicks_bus_types_table">
+																		<thead>
+																			<tr>
+																				<th>BUSINESS TYPE</th>
+																				<th>COUNT</th>
+																			</tr>
+																		</thead>
+																		<tbody class="clicks_bus_types_tbody"></tbody>
+																	</table>
+																</div>
+															</div>
+															<div class="col-md-3">
+																<h5 style="margin: 0">
+																	<span style="font-weight: bold; color: #555;">IN
+																		DEMAND WORK TYPES IN CCO</span> <br /> <small>based
+																		on Clicks</small>
+																</h5>
+																<div class="clicks_work_type_cco_div">
+																	<table class="table clicks_work_type_cco_table">
+																		<thead>
+																			<tr>
+																				<th>WORK TYPE</th>
+																				<th>COUNT</th>
+																			</tr>
+																		</thead>
+																		<tbody class="clicks_work_type_cco_tbody"></tbody>
+																	</table>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-lg-12 col-md-12 col-sm-12">
+														<div class="row"
+															style="text-align: center; height: 280px;">
+															<div class="col-md-3">
+																<h5 style="margin: 0">
+																	<span style="font-weight: bold; color: #555;">PREFERRED
+																		SUPPORT JOBS</span> <br /> <small>based on Clicks</small>
+																</h5>
+																<div class="clicks_pref_supp_jobs_div">
+																	<table class="table clicks_pref_supp_jobs_table">
+																		<thead>
+																			<tr>
+																				<th>WORK TYPE</th>
+																				<th>COUNT</th>
+																			</tr>
+																		</thead>
+																		<tbody class="clicks_pref_supp_jobs_tbody"></tbody>
+																	</table>
+																</div>
+															</div>
+															<div class="col-md-3">
+																<h5 style="margin: 0">
+																	<span style="font-weight: bold; color: #555;">PREFERRED
+																		SUPPORT DEPARTMENT</span> <br /> <small>based on
+																		Clicks</small>
+																</h5>
+																<div class="clicks_pref_supp_dept_div">
+																	<table class="table clicks_pref_supp_dept_table">
+																		<thead>
+																			<tr>
+																				<th>WORK TYPE</th>
+																				<th>COUNT</th>
+																			</tr>
+																		</thead>
+																		<tbody class="clicks_pref_supp_dept_tbody"></tbody>
+																	</table>
+																</div>
+															</div>
+															<div class="col-md-3">
+																<h5 style="margin: 0">
+																	<span style="font-weight: bold; color: #555;">IN
+																		DEMAND JOB PROFILES</span> <br /> <small>based on
+																		Clicks</small>
+																</h5>
+																<div class="clicks_job_profile_div">
+																	<table class="table clicks_job_profile_table">
+																		<thead>
+																			<tr>
+																				<th>JOB PROFILE</th>
+																				<th>COUNT</th>
+																			</tr>
+																		</thead>
+																		<tbody class="clicks_job_profile_tbody"></tbody>
+																	</table>
+																</div>
+															</div>
+															<div class="col-md-3">
+																<h5 style="margin: 0">
+																	<span style="font-weight: bold; color: #555;">COUNT
+																		OF CLICKS FOR SUPPORT AND TIDS</span> <br /> <small>based
+																		on Clicks</small>
+																</h5>
+																<div class="clicks_supp_and_tids_div">
+																	<table class="table clicks_supp_and_tids_table">
+																		<thead>
+																			<tr>
+																				<th>CATEGORY</th>
+																				<th>COUNT</th>
+																			</tr>
+																		</thead>
+																		<tbody class="clicks_supp_and_tids_tbody"></tbody>
+																	</table>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /page content -->
+			<!-- footer content -->
+			<footer th:fragment="footer"
+				style="background-color: #555; color: white; padding: 15px;">
+				<div class="pull-right">Career City - TELUS International
+					Philippines</div>
+				<div class="clearfix"></div>
+			</footer>
+			<!-- /footer content -->
+			<!-- modals -->
+			<div th:replace="fragments/modals/ccoModal"></div>
+			<div th:replace="fragments/modals/tidsModal"></div>
+			<div th:replace="fragments/modals/supportModal"></div>
+		</div>
+	</div>
+	<!-- jQuery -->
+	<script
+		th:src="@{/lib/gentelella-1.4.0/vendors/jquery/dist/jquery.min.js}"></script>
+	<!-- Bootstrap -->
+	<script
+		th:src="@{/lib/gentelella-1.4.0/vendors/bootstrap/dist/js/bootstrap.min.js}"></script>
+	<!-- FastClick -->
+	<script
+		th:src="@{/lib/gentelella-1.4.0/vendors/fastclick/lib/fastclick.js}"></script>
+	<!-- NProgress -->
+	<script
+		th:src="@{/lib/gentelella-1.4.0/vendors/nprogress/nprogress.js}"></script>
+	<!-- Chart.js -->
+	<script
+		th:src="@{/lib/gentelella-1.4.0/vendors/Chart.js/dist/Chart.min.js}"></script>
+	<!-- jQuery Sparklines -->
+	<script
+		th:src="@{/lib/gentelella-1.4.0/vendors/jquery-sparkline/dist/jquery.sparkline.min.js}"></script>
+	<!-- Flot -->
+	<script th:src="@{/lib/gentelella-1.4.0/vendors/Flot/jquery.flot.js}"></script>
+	<script
+		th:src="@{/lib/gentelella-1.4.0/vendors/Flot/jquery.flot.pie.js}"></script>
+	<script
+		th:src="@{/lib/gentelella-1.4.0/vendors/Flot/jquery.flot.time.js}"></script>
+	<script
+		th:src="@{/lib/gentelella-1.4.0/vendors/Flot/jquery.flot.stack.js}"></script>
+	<script
+		th:src="@{/lib/gentelella-1.4.0/vendors/Flot/jquery.flot.resize.js}"></script>
+	<!-- Flot plugins -->
+	<script
+		th:src="@{/lib/gentelella-1.4.0/vendors/flot.orderbars/js/jquery.flot.orderBars.js}"></script>
+	<script
+		th:src="@{/lib/gentelella-1.4.0/vendors/flot-spline/js/jquery.flot.spline.min.js}"></script>
+	<script
+		th:src="@{/lib/gentelella-1.4.0/vendors/flot.curvedlines/curvedLines.js}"></script>
+	<!-- DateJS -->
+	<script th:src="@{/lib/gentelella-1.4.0/vendors/DateJS/build/date.js}"></script>
+	<!-- bootstrap-daterangepicker -->
+	<script
+		th:src="@{/lib/gentelella-1.4.0/vendors/moment/min/moment.min.js}"></script>
+	<script
+		th:src="@{/lib/gentelella-1.4.0/vendors/bootstrap-daterangepicker/daterangepicker.js}"></script>
+	<!-- bootstrap-progressbar -->
+	<script
+		th:src="@{/lib/gentelella-1.4.0/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js}"></script>
+	<!-- Datatables -->
+	<script
+		th:src="@{/lib/gentelella-1.4.0/vendors/datatables.net/js/jquery.dataTables.min.js}"></script>
+	<script
+		th:src="@{/lib/gentelella-1.4.0/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js}"></script>
+	<script
+		th:src="@{/lib/gentelella-1.4.0/vendors/datatables.net-buttons/js/dataTables.buttons.min.js}"></script>
+	<script
+		th:src="@{/lib/gentelella-1.4.0/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js}"></script>
+	<script
+		th:src="@{/lib/gentelella-1.4.0/vendors/datatables.net-buttons/js/buttons.flash.min.js}"></script>
+	<script
+		th:src="@{/lib/gentelella-1.4.0/vendors/datatables.net-buttons/js/buttons.html5.min.js}"></script>
+	<script
+		th:src="@{/lib/gentelella-1.4.0/vendors/datatables.net-buttons/js/buttons.print.min.js}"></script>
+	<script
+		th:src="@{/lib/gentelella-1.4.0/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js}"></script>
+	<script
+		th:src="@{/lib/gentelella-1.4.0/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js}"></script>
+	<script
+		th:src="@{/lib/gentelella-1.4.0/vendors/datatables.net-responsive/js/dataTables.responsive.min.js}"></script>
+	<script
+		th:src="@{/lib/gentelella-1.4.0/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js}"></script>
+	<script
+		th:src="@{/lib/gentelella-1.4.0/vendors/datatables.net-scroller/js/dataTables.scroller.min.js}"></script>
+	<!-- morris.js -->
+	<script
+		th:src="@{/lib/gentelella-1.4.0/vendors/raphael/raphael.min.js}"></script>
+	<script
+		th:src="@{/lib/gentelella-1.4.0/vendors/morris.js/morris.min.js}"></script>
+	<!-- Custom Theme Scripts -->
+	<script th:src="@{/lib/gentelella-1.4.0/build/js/custom.js}"></script>
+	<!-- Custom Theme Scripts -->
+	<script th:src="@{/js/admin-custom.js}"></script>
+	<script th:src="@{/js/analytics.js}"></script>
+	<!-- Multiple Select -->
+	<script
+		th:src="@{/lib/gentelella-1.4.0/vendors/multiple-select-1.5.2/multiple-select-1.5.2/dist/multiple-select.min.js}"></script>
+</body>
+</html>

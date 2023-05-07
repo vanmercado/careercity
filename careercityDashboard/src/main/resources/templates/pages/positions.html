@@ -1,0 +1,135 @@
+<head th:insert="pages/fragments/admin_head"></head>
+<style>
+  .nav.navbar-right.panel_toolbox {
+    margin-top: 6px;
+  }
+</style>
+<div class="container body">
+    <div class="main_container">
+        <div th:insert="pages/admin :: left_col"></div>
+        <div th:insert="pages/admin :: top_nav"></div>
+        <!-- Page Content -->
+        <div class="right_col" role="main">
+            <div class="main-content">
+                <!-- Title Section -->
+                <div class="page-title">
+                    <div class="title_left"></div>
+                    <div class="title_right"></div>
+                </div>
+                <!-- Title Section -->
+                <div class="clearfix"></div>
+                <!-- Content - All -->
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <ul class="nav navbar-left panel_toolbox">
+                                    <li>
+                                        <div class="title_left">
+                                            <h3>
+                                                <strong>Positions</strong>
+                                            </h3>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li>
+                                        <a class="btn btn-success" th:href="@{/admin/syncjobreq}" style="color: white;">Sync Job Requisition</a>
+                                    </li>
+                                    <li>
+                                        <a class="btn btn-success" th:href="@{/admin/positions/create}" style="color: white;">
+                                            <i class="fa fa-plus" style="font-weight: 100;"></i> New Position
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div class="table-responsive">
+                                    <table id="datatable" class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr style="white-space: nowrap;">
+                                                <th>Visibility</th>
+                                                <th>Configuration</th>
+                                                <th>Job Profile</th>
+                                                <th>Department</th>
+                                                <th>Support Type</th>
+                                                <th>Description</th>
+                                                <th>Job Requisition</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr th:each="position : ${allpositions}">
+                                                <td>
+                                                    <button class="btn btn-sm btn-success" th:if="${position?.CATEGORY != null && position?.CATEGORY != 'NA'}" disabled="disabled">
+                                                        <i class="material-icons">On</i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-danger" th:if="${position?.CATEGORY == null || position?.CATEGORY == 'NA'}" disabled="disabled">
+                                                        <i class="material-icons">Off</i>
+                                                    </button>
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-sm btn-primary" th:href="@{/admin/positions/} + ${position?.POSITION_ID}">
+                                                        <i class="material-icons">Edit</i>
+                                                    </a>
+                                                    <a class="btn btn-sm btn-warning" th:href="@{/positionmaps/} + ${position?.POSITION_ID}">
+                                                        <i class="material-icons">Map Results</i>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <img class="img-thumbnail" alt="" th:src="${position?.IMAGE_PATH}" style="max-height: 25px; max-width: 25px;"></img>
+                                                    <span th:text="${position?.JOB_PROFILE}"></span>
+                                                </td>
+                                                <td th:text="${position?.DEPARTMENT}"></td>
+                                                <td th:text="${position?.SUPPORT_TYPE}"></td>
+                                                <td th:text="${position?.DESCRIPTION}"></td>
+                                                <td th:text="${position?.JOB_REQ}"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Event History - All -->
+                <div class="col-md-12">
+                    <h3 class="text-muted font-13 m-b-30">Events History - All</h3>
+                    <script>
+                        $(document).ready(function() {
+                            $('#logs_datatables_positions_all').DataTable({
+                                "order" : [2, 'desc']
+                            });
+                        });
+                    </script>
+                    <table id="logs_datatables_positions_all" class="table table-striped table-bordered" style="width: 100%">
+                        <thead>
+                            <tr>
+                                <th class="columnhidden"></th>
+                                <th>Activity</th>
+                                <th>Altered By</th>
+                                <th>Timestamp</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="positionHistory_item : ${allPositionHistory}">
+                                <td class="columnhidden"></td>
+                                <td th:text="${positionHistory_item.position_hist_msg}"></td>
+                                <td th:text="${positionHistory_item.position_hist_user}"></td>
+                                <td th:text="${#calendars.format(positionHistory_item.timestamp,'(dd MMM YYYY) h:mm:ss a')}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Event History - All -->
+                <!-- Content - All -->
+            </div>
+            <!--div.main-content-->
+            <div class="clearfix"></div>
+        </div>
+        <!-- div.right_col -->
+        <!-- /page content -->
+    </div>
+</div>
+<div th:insert="pages/admin :: footer"></div>
+<div th:insert="pages/fragments/admin_foot"></div>

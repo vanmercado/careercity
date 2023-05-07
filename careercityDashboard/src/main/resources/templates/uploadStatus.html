@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BCX image uploader</title>
+<div th:replace="fragments/headplugs"> </div>
+</head>
+<body>
+<a th:href="@{'/listaccount'}">Back to Account List</a>
+<h1>Copy link below to imagepath Input Box</h1>
+
+<div th:if="${message}">
+    <h2 th:text="${message}"></h2>
+</div>
+ <div th:replace="fragments/footplugs"> </div>
+</body>
+</html>

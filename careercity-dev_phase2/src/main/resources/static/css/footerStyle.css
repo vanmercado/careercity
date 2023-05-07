@@ -1,0 +1,32 @@
+div.container-fluid.footer{
+	color: white;
+	font-weight: 100;
+    font-size: 14;
+}
+div.container-fluid.footer .row .col-md-4{
+	padding-left: 5%;
+ 	padding-right: 5%;
+ 	 
+}
+
+div.footer .col-md-12 a{
+	color: #fff;
+	text-decoration: none;
+	outline: none;
+	
+}
+div.footer .col-md-12 a{
+	color: #fff;
+	text-decoration: underline;
+	 
+}
+
+.footer-modal{
+	color:#212529;
+}
+
+.footer-modal-trigger img{
+	width: 260px;
+    height: 25px;
+    
+}

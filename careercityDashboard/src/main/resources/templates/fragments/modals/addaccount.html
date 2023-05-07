@@ -1,0 +1,128 @@
+<div class="container">
+    <div class="modal fade" id="addaccount" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div th:replace="fragments/stylemodal"/>
+            <div class="modal-content">
+                <!--
+                <div class="modal-header">
+                </div>
+                -->
+                <div class="modal-body">
+                    <h5>Account Details (shown in the gallery and results)</h5>
+                    <hr/>
+                    <form th:action="@{/addaccount}" method="post" enctype="multipart/form-data">
+                        <!-- hidden -->
+                        <div class="columnhidden">
+                            <p>Category
+                                <span>
+                                    <input type="text" id="category1" name="CATEGORY" value="CC"/>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="columnhidden">
+                            <p>Changed By
+                                <span>
+                                    <input type="text" id="created_by" name="created_by" th:value="${lastsavedby}"/>
+                                </span>
+                            </p>
+                        </div>
+                        <!--
+                        <div class="columnhidden">
+                            <p>Account Id
+                            <span>
+                                <input  id="account_id1" name="ACCOUNT_ID"></input>
+                            </span>
+                            </p>
+                        </div>
+                        -->
+                        <!-- hidden -->
+                        <p>Account Name
+                            <span>
+                                <input type="text" id="account_name1" name="ACCOUNT_NAME"/>
+                            </span>
+                        </p>
+                        <div class="form-group row">
+                            <div class="col-md-5">
+                                <input class="form-control" type="text" id="image_path_accountpage" name="ACCOUNT_IMAGE_PATH" readonly="readonly"/>
+                            </div>
+                            <div class="col-md-5 text-right">
+                                <input id="fileFetcher_accounts" type="file" name="file"/>
+                                <!-- <a class="btn btn-primary" th:href="@{/uploadpage}">Upload Image</a> -->
+                            </div>
+                        </div>
+                        <p>Account Location
+                            <span>
+                                <input type="text" id="location1" name="LOCATION"/>
+                            </span>
+                        </p>
+                        <p>Line of Business
+                            <span>
+                                <input type="text" id="lob1" name="LOB"/>
+                            </span>
+                        </p>
+                        <p>Business Vertical
+                            <span>
+                                <input type="text" id="business_vertical1" name="BUSINESS_VERTICAL"/>
+                            </span>
+                        </p>
+                        <p>Work Type
+                            <span>
+                                <input type="text" id="work_type1" name="WORK_TYPE"/>
+                            </span>
+                        </p>
+                        <p>Job Requisition
+                            <span>
+                                <input type="text" id="job_req1" name="JOB_REQ"/>
+                            </span>
+                        </p>
+                        <!-- hidden columns in table-->
+                        <p>Hours of Operation
+                            <span>
+                                <input type="text" id="operating_hours1" name="OPERATING_HOURS"/>
+                            </span>
+                        </p>
+                        <p>Educational Requirements
+                            <span>
+                                <input type="text" id="education1" name="EDUCATION"/>
+                            </span>
+                        </p>
+                        <p>Skills Required
+                            <span>
+                                <input type="text" id="skills1" name="SKILLS"/>
+                            </span>
+                        </p>
+                        <p>BPO Experience
+                            <span>
+                                <input type="text" id="bpo_exp1" name="BPO_EXP"/>
+                            </span>
+                        </p>
+                        <p>Account Description
+                            <span>
+                                <textarea class="form-control rounded-0" rows="6" id="description1" name="DESCRIPTION"></textarea>
+                            </span>
+                        </p>
+                        <p>Member Tasks
+                            <span>
+                                <textarea class="form-control rounded-0" rows="4" id="tm_task1" name="TM_TASK"></textarea>
+                            </span>
+                        </p>
+                        <p>Skills
+                            <span>
+                                <textarea class="form-control rounded-0" rows="4" id="skills1" name="SKILLS"></textarea>
+                            </span>
+                        </p>
+                        <p>Trainings
+                            <span>
+                                <textarea class="form-control rounded-0" rows="6" id="trainings1" name="TRAININGS"></textarea>
+                            </span>
+                        </p>
+                        <button type="submit" class="btn btn-success">Save</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

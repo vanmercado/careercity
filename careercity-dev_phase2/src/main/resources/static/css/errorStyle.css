@@ -1,0 +1,73 @@
+html, body{
+	background-size:cover;
+	background-repeat:no-repeat;
+	background-image:url('../img/index/error img.jpg');
+}
+
+.cont{
+	position:relative;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	text-align: center;
+}
+.error-msg{
+	position: absolute;
+	width: 50%;
+	top: 12%;
+	left: 0;
+	right: 0;
+	margin: auto;
+	padding: 3%;
+	background-color: #fff;
+	border-radius: 50%;
+	border: 2px solid #4B286D;
+}
+#think-panda{
+	width: 50%;
+	top: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	margin-bottom: 10px;
+}
+#four-o-four{
+	width: 100%;
+	font-size: 3em;
+	color: #C12335;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
+	font-style: normal; 
+	font-variant: normal; 
+	font-weight: 700; 
+	line-height: 50px;
+}
+#msg{
+	font-weight: 600;
+}
+.home-btn{
+	font-weight: 400;
+	background-color: #248700;
+	border-radius: 3px;
+	font-size: 0.8em;
+	padding: 10px 20px;
+	border: none;
+	text-transform: uppercase;
+	cursor: pointer;
+	margin-top: 20px;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+.home-btn > a{
+	color: #fff;
+}
+.home-btn > a:hover{
+	color: #fff;
+	text-decoration: none;
+}
+.home-btn:hover{
+	background-color: #1C6A00;	
+}

@@ -1,0 +1,58 @@
+<div id="customizePassword" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div th:replace="fragments/stylemodal"></div>
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div>
+                            <h4 class="modal-title">Change Password</h4>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid" id="modalForm">
+                            <input type="text" class="user_id" name="USER_ID"></input>
+                            <span class="currentUser hidden" th:text="${#authentication.getPrincipal().getUsername()}"></span>
+                            <div class="form-group row">
+                                <label for="password" class="col-md-4 col-sm-4 col-xs-4 col-form-label">Current Password</label>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <input type="password" class="form-control" id="currentPassInput" name="CURRENT_PASSWORD"></input>
+                                    <span class="emptyError hidden" style="color: red">This field must not be empty.</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="password" class="col-md-4 col-sm-4 col-xs-4 col-form-label">New Password</label>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <input type="password" class="form-control" id="newPassInput" name="NEW_PASSWORD"></input>
+                                    <span class="passError hidden" style="color: red">Not matching</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="password" class="col-md-4 col-sm-4 col-xs-4 col-form-label">Confirm New Password</label>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <input type="password" class="form-control" id="confirmNewPassInput" name="CONFIRM_PASSWORD"></input>
+                                    <span class="passError hidden" style="color: red">Not matching</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div style="float: right; vertical-align: top">
+                            <div style="display: inline-block">
+                                <input type="submit" id="changePassBtn" class="btn btn-primary" value="Change"></input>
+                            </div>
+                            <div style="display: inline-block">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal content-->
+        </div>
+    </div>
+</div>

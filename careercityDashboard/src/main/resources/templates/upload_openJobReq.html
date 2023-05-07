@@ -1,0 +1,167 @@
+<head th:insert="pages/fragments/admin_head"></head>
+<div class="container body">
+	<div class="main_container">
+		<div th:insert="pages/admin :: left_col"></div>
+		<div th:insert="pages/admin :: top_nav"></div>
+
+		<!-- Page Content -->
+		<div class="right_col" role="main">
+			<div class="main-content">
+			
+				<!-- Title Section -->
+				<div class="page-title">
+					<div class="title_left"></div>
+					<div class="title_right"></div>
+				</div>
+				<!-- Title Section -->
+				
+				<div class="clearfix"></div>
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="x_panel">
+								<div class="x_title">
+									<ul class="nav navbar-left panel_toolbox">
+										<li>
+											<div class="title_left">
+												<h3>
+													<strong>Upload - Open Job Requisition</strong> <small>(.csv)</small>
+												</h3>
+											</div>
+										</li>
+									</ul>
+									<div class="clearfix"></div>
+								</div>
+								<div class="x_content">
+									<div class="upload_details">
+										
+										<div>
+											<form th:action="@{/admin/uploadopenjobreq}" method="post" enctype="multipart/form-data" id="fileUploadForm">
+												<input type="file" name="file"><br>
+												<input class="btn btn-success btn-sm uploadBtn" type="submit" value="Upload">
+											</form>
+											
+										<!-- 	<span id="counts"></span>
+											<span>/</span>
+											<span id="total"></span> -->
+										
+
+										</div>
+										
+										
+										<span id="loadStatus"></span>
+										<!--  <script type="text/javascript">
+										 $(document).ready(function () {
+											    $(".uploadBtn").click(function (event) {
+
+											        //stop submit the form, we will post it manually.
+											        event.preventDefault();
+
+											        // Get form
+											        var form = $('#fileUploadForm')[0];
+
+													// Create an FormData object
+											        var data = new FormData(form);
+
+													// If you want to add an extra field for the FormData
+/* 											        data.append("CustomField", "This is some extra data, testing"); */
+
+													// disabled the submit button
+											        $(".uploadBtn").prop("disabled", true);
+
+											        $.ajax({
+											            type: "POST",
+											            enctype: 'multipart/form-data',
+											            url: "../admin/uploadopenjobreq",
+											            data: data,
+											            async: false,
+											            processData: false,
+											            contentType: false,
+											            cache: false,
+											            timeout: 600000,
+											            success: function (data) {
+
+											                /* $("#counts").text(data); */
+											                $(".uploadBtn").prop("disabled", false);
+
+											            },
+											            error: function (e) {
+
+											                $("#counts").text(e.responseText);
+											                console.log("ERROR : ", e);
+											                $(".uploadBtn").prop("disabled", false);
+
+											            }
+											        });
+											        
+											      
+											        var myVar = setInterval(count, 500);
+											        var currentCount = 0;
+										        	var totalCount = 0;
+
+										        	$.ajax({
+											            type: "GET",
+											            url: "../admin/totalcount",
+											            success: function (data) {
+											            	totalCount = data;
+											            	$("#total").text(data);
+											            },
+											            error: function (e) {
+											            	 $("#counts").text(e.responseText);
+
+											            } 
+											        });
+											        
+											        
+											        function count(){
+											        	$.ajax({
+												            type: "GET",
+												            url: "../admin/currentcount",
+												            success: function (data) {
+												            	currentCount = data
+												            	$("#counts").text(data);
+												            	checkCount();
+												            	
+												            },
+												            error: function (e) {
+												            	 $("#counts").text(e.responseText);
+
+												            } 
+												        });
+											        }
+											        
+											        function checkCount(){
+											        	if(currentCount = totalCount){
+											        		clearInterval(myVar);
+												        	console.log("stopped");
+											        	}
+											        }
+										
+											       
+
+											  
+											       
+											      
+											       
+
+											    });
+
+											});
+										</script> -->
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				
+				</div><!--div.main-content-->
+				
+				<div class="clearfix"></div>
+
+
+		</div><!-- div.right_col -->
+		<!-- Page Content -->
+</div>
+</div>
+<div th:insert="pages/admin :: footer"></div>
+<div th:insert="pages/fragments/admin_foot"></div>

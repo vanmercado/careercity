@@ -1,0 +1,266 @@
+/* Start Change - Daryll Moya - 02-MAR-2021 */
+.nav-link.home-link {
+  font-size: 1.5rem;
+  /* padding: 1rem 1.5rem !important; */
+  padding: 1.2rem 1.2rem !important;
+  overflow: hidden;
+  /* height: 3rem; */
+  height: 4rem;
+}
+/* End Change - Daryll Moya - 02-MAR-2021 */
+
+.nav-link.home-link:before {
+  content: "\f359";
+  position: absolute;
+  left: 7px;
+  transition: all 200ms ease;
+  /* Start Add - Daryll Moya - 03-MAR-2021 */
+  padding-left: 15px;
+  /* End Add - Daryll Moya - 03-MAR-2021 */
+}
+
+.account-container {
+  overflow: hidden;
+}
+
+.account-container button {
+  font-size: 1.2rem;
+}
+
+.account-title-main h2 {
+  margin-bottom: 0;
+}
+
+.account-subtitle {
+  text-align: left;
+}
+
+.account-subtitle * {
+  font-size: 0.9rem;
+  margin: auto auto 0.3rem auto;
+}
+
+.card-deck {
+  margin-bottom: 5vh;
+}
+
+.card.col-md-3 {
+  padding: 0;
+  background-color: white;
+}
+
+.card.col-md-3:hover {
+  padding: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 1px 3px 10px black;
+  color: white;
+}
+
+.card-content {
+  border: 1px solid black;
+  background: white;
+  border-radius: 5px 5px;
+}
+
+/* Start Change - Daryll Moya - 04-MAR-2021 */
+.card img {
+  /*
+  height: 250px;
+  width: 250px;
+  */
+  height: 175px;
+  width: 175px;
+  padding: 5%;
+}
+/* End Change - Daryll Moya - 04-MAR-2021 */
+
+.card-title {
+  font-size: 1.05rem;
+  font-weight: normal;
+}
+
+.card-body.text-dark {
+  min-height: 128px;
+}
+
+.card-body.text-dark .card-title {
+  padding: 0 1rem;
+  text-align: center;
+  height: 7rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.card-body.text-dark .card-title strong {
+  font-weight: bold !important;
+}
+
+.card-body.text-dark .card-subtitle {
+  padding: 1rem;
+}
+
+.card-body p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.modal-body .card {
+  border: none;
+  margin-bottom: 1rem;
+}
+
+.modal-body p {
+  text-align: justify;
+}
+
+.account-modal-head {
+  margin-bottom: 1rem;
+}
+
+.account-modal-head .account-modal-image {
+  text-align: right;
+}
+
+.account-modal-head .account-modal-image img {
+  height: 180px;
+  width: 180px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 1px 1px black;
+}
+
+.account-modal-head .account-modal-title {
+  padding-left: 2rem;
+}
+
+div.category-separator {
+  background-color: white;
+  color: black;
+  text-align: center;
+  padding: 1%;
+}
+
+div.category-content {
+  margin: 0;
+  width: 70%;
+  text-align: right;
+}
+
+.input-group-prepend .input-group-text.search-text {
+  background-color: white;
+  border: none;
+  border: 1px solid rgb(0, 0, 0, 0.2);
+  margin-right: 0;
+  margin-left: 0.5%;
+  border-radius: 0;
+}
+
+div.input-group.search-group {
+  float: left;
+  padding: 0;
+  width: 30%;
+  transition: 0.3s;
+}
+
+.input-group input.form-control {
+  /* 	margin-left: 0.5%; */
+  width: 22.8%;
+  transition: 0.3s;
+  background-color: white;
+  border-radius: 0px;
+  margin-left: 0;
+  outline: none;
+  box-shadow: none;
+}
+
+input.form-control::placeholder {
+  color: rgb(42, 44, 46, 0.5);
+  font-size: 0.8rem;
+}
+
+input.form-control:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+button.category-btn, button#department-textbtn {
+  background-color: transparent;
+  color: white;
+  background-color: #66cc00;
+  border: none;
+  cursor: pointer;
+  font-size: 0.8em; /*prev: 1.1em*/
+  margin: 1px 0;
+  padding: 0.5rem 1rem;
+  transition: 0.3s;
+  border-radius: 4px !important;
+}
+
+button.category-btn:hover {
+  /* background: -webkit-gradient(linear,0% 0%,0% 100%, from(#4B286D), to(white)); */
+  opacity: 0.8;
+  color: white;
+  transition: 0.3s;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+  border-radius: 2px 2px;
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.2) inset;
+}
+
+button.category-btn:focus {
+  /* background: -webkit-gradient(linear,0% 0%,0% 100%, from(#4B286D), to(white)); */
+  background-color: #4b286d;
+  color: white;
+  transition: 0.3s;
+  padding-left: 2%;
+  padding-right: 2%;
+  border-radius: 2px 2px;
+  outline-color: #66cc00;
+}
+
+button#department-textbtn {
+  background-color: transparent;
+  color: white;
+  background-color: #4b286d;
+  border: none;
+  cursor: pointer;
+  font-size: 0.8em; /*prev: 1.1em*/
+  font-weight: bold;
+  margin: 1px 0;
+  padding: 0.5rem 1rem;
+  transition: 0.3s;
+  border-radius: 4px !important;
+}
+
+button#department-textbtn:focus {
+  background-color: #66cc00;
+  color: white;
+  transition: 0.3s;
+  border-radius: 2px 2px;
+  outline-color: #4b286d;
+}
+
+.dropdown-menu > button {
+  font-size: 1em;
+}
+
+.dropdown-menu > button:hover {
+  background-color: #E5E7E9;
+}
+
+.dropdown-menu > button:focus {
+  outline-color: #66cc00;
+}
+
+.dropdown-menu > button:active {
+  background-color: #66cc00;
+}
+
+hr {
+  width: 100%;
+}
+
+#googleforms {
+  color: #248700;
+}

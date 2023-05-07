@@ -1,0 +1,95 @@
+<div id="edituserdetails" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div th:replace="fragments/stylemodal"></div>
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form th:action="@{/edituser}" method="post">
+                            <!-- Hidden -->
+                            <div class="columnhidden">
+                                <p>User Id
+                                    <span>
+                                        <input type="number"  id="user_id" name="USER_ID"></input>
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="columnhidden">
+                                <p>Changed By
+                                    <span>
+                                        <input type="text"  id="created_by" name="created_by" th:value="${changedby}"></input>
+                                    </span>
+                                </p>
+                            </div>
+                            <!-- Hidden -->
+                            <p>First Name
+                                <span>
+                                    <input type="text" id= "firstname" name="firstname"></input>
+                                </span>
+                            </p>
+                            <p>Last Name
+                                <span>
+                                    <input type="text" id="lastname" name="lastname"></input>
+                                </span>
+                            </p>
+                            <p>Employee Id
+                                <span>
+                                    <input type="text" id="username1" name="username"></input>
+                                </span>
+                            </p>
+                            <p>Department
+                                <span>
+                                    <input type="text" id= "USER_GROUP" name="USER_GROUP"></input>
+                                </span>
+                            </p>
+                            <p>Activate/Deactivate
+                                <span>
+                                    <select id= "USER_STATUS" name="USER_STATUS">
+                                        <option value="true">Active</option>
+                                        <option value="false">Disable</option>
+                                    </select>
+                                </span>
+                            </p>
+                            <p>Change Password
+                                <span>
+                                    <input type="text" id= "PASSWORD" name="PASSWORD"></input>
+                                </span>
+                            </p>
+                            <input type="submit" value="Save"></input>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+$(document).ready(function(){
+    $('.userspage').on('click', '#editUsers', function(){
+        var currentRow = $(this).closest('tr');
+        
+        var col0 = currentRow.find('td:eq(0)').text(); // get current row 1st TD value
+        var col1 = currentRow.find('td:eq(1)').text();
+        var col2 = currentRow.find('td:eq(2)').text();
+        var col3 = currentRow.find('td:eq(3)').text();
+        var col4 = currentRow.find('td:eq(4)').text();
+        var col5 = currentRow.find('td:eq(5)').text();
+        
+        /* Modal data catch */
+        $('#user_id').val(col0);
+        $('#firstname').val(col1);
+        $('#lastname').val(col2);
+        $('#username1').val(col3);
+        $('#USER_GROUP').val(col4);
+        $('#USER_STATUS').val(col5);
+    });
+});
+</script>

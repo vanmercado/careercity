@@ -1,0 +1,112 @@
+<head th:insert="pages/fragments/admin_head"></head>
+<div class="container body">
+	<div class="main_container">
+		<div th:insert="pages/admin :: left_col"></div>
+		<div th:insert="pages/admin :: top_nav"></div>
+
+		<!-- Page Content -->
+		<div class="right_col" role="main">
+			<div class="main-content">
+			
+				<!-- Title Section -->
+				<div class="page-title">
+					<div class="title_left"></div>
+					<div class="title_right"></div>
+				</div>
+				<!-- Title Section -->
+				
+				<div class="clearfix"></div>
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="x_panel">
+								<div class="x_title">
+									<ul class="nav navbar-left panel_toolbox">
+										<li>
+											<div class="title_left">
+												<h3>
+													<strong>Bulk Upload</strong> <small>(.csv)</small>
+												</h3>
+											</div>
+										</li>
+									</ul>
+									<div class="clearfix"></div>
+								</div>
+								<div class="x_content">
+									<div th:if="${uploadSuccessMessage}" style="margin-bottom: 10px">
+										<div class="alert alert-success">
+											<span th:text="${uploadSuccessMessage}"></span>
+										</div>
+									</div>
+									<div th:if="${success}" style="margin-bottom: 10px">
+										<div class="alert alert-success">
+											<span th:text="${success}"></span>
+										</div>
+									</div>
+									<div th:if="${error}" style="margin-bottom: 10px">
+										<div class="alert alert-error">
+											<span th:text="${error}"></span>
+										</div>
+									</div>
+									<div th:if="${invalidFileExtension}" style="margin-bottom: 10px">
+										<div class="alert alert-error">
+											<span th:text="${invalidFileExtension}"></span>
+										</div>
+									</div>
+									<div class="upload_details">
+										<div th:if="${noAddedFound}">
+											<span th:text="${noAddedFound}"></span><hr>
+										</div>
+										<div th:if="${addedList}">
+											<table>
+												<thead>
+													<tr>
+														<th>Added User/s:</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr th:each="user : ${addedList}">
+														<td th:text="${user.lastName} + ', ' + ${user.firstName} + ' ' + ${user.secondName}"></td>
+													</tr>
+												</tbody>
+											</table><hr>
+										</div>
+										<div th:if="${noDuplicateFound}">
+											<span th:text="${noDuplicateFound}"></span><hr>
+										</div>
+										<div th:if="${duplicateList}">
+											<table>
+												<thead>
+													<tr>
+														<th>Duplicate User/s found:</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr th:each="user : ${duplicateList}">
+														<td th:text="${user.lastName} + ', ' + ${user.firstName} + ' ' + ${user.secondName}"></td>
+													</tr>
+												</tbody>
+											</table><hr>
+										</div>
+										<div>
+											<form th:action="@{/admin/uploadcsv}" method="post" enctype="multipart/form-data">
+												<input type="file" name="file"><br>
+												<input class="btn btn-success btn-sm" type="submit" value="Upload">
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				
+				</div><!--div.main-content-->
+				
+				<div class="clearfix"></div>
+
+
+		</div><!-- div.right_col -->
+		<!-- Page Content -->
+</div>
+</div>
+<div th:insert="pages/admin :: footer"></div>
+<div th:insert="pages/fragments/admin_foot"></div>

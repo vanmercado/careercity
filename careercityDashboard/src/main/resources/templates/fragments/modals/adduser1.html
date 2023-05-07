@@ -1,0 +1,56 @@
+<div class="modal fade" id="adduser"  role="dialog">
+    <div class="modal-dialog">
+        <div th:replace="fragments/stylemodal"></div>
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">New User Details</h4>
+            </div>
+            <div class="modal-body">
+                <form th:action="@{/adduser}" method="POST">
+                    <div class="columnhidden">
+                        <p>Changed By
+                            <span>
+                                <input type="text"   name="created_by" th:value="${changedby}"></input>
+                            </span>
+                        </p>
+                    </div>
+                    <p>First Name
+                        <span>
+                            <input type="text" name="firstname" id="firstname"></input>
+                        </span>
+                    </p>
+                    <p>Last Name
+                        <span>
+                            <input type="text" name="lastname" id="lastname"></input>
+                        </span>
+                    </p>
+                    <p>Employee Id
+                        <span>
+                            <input type="text" name="username" id="username"></input>
+                        </span>
+                    </p>
+                    <p>Department
+                        <span>
+                            <input type="text" name="USER_GROUP" id="USER_GROUP"></input>
+                        </span>
+                    </p>
+                    <p>Password:
+                        <span>
+                            <input type="password" name="PASSWORD" id="PASSWORD"></input>
+                        </span>
+                    </p>
+                    <p>Access Type:
+                        <span>
+                            <input type="number" name="USER_STATUS" value="1"></input>
+                        </span>
+                    </p>
+                    <input type="submit" value="Save"></input>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

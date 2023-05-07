@@ -1,0 +1,78 @@
+<div class="modal fade" id="addpositionmapmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #4b286d; color: white; display: block">
+                <div style="display: inline-block; float: left">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        <strong>Add Mapping -
+                            <span th:text="${positionmaps.JOB_PROFILE}"></span>
+                        </strong>
+                    </h5>
+                </div>
+                <div style="display: inline-block; float: right">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <form th:action="@{/addpositionanswers}" method="post">
+                    <input class="columnhidden" type="number" id="positionmappingid" name="POSITION_ID" th:value="${positionmaps.POSITION_ID}"></input>
+                    <br/>
+                    <!--
+                    <input type="radio"  name="question" value="1">Preferred Site Location<br/> 
+                    <select class="form-control" name="answer">
+                        <option value="1">Araneta</option>
+                        <option value="2">Discovery</option>
+                        <option value="3">Market Market / GoVo</option>
+                        <option value="4">McKinley Exchange</option>
+                        <option value="5">McKinley West</option>
+                    </select><br/><br/> 
+                    <input type="radio" name="question" value="2">Preferred Type of Work (CCO)<br/>
+                    <select class="form-control" name="answer">
+                        <option value="6">Customer Service</option>
+                        <option value="7">Technical Support</option>
+                        <option value="8">Sales</option>
+                    </select>
+                    -->
+                    <select class="form-control" name="questions">
+                        <option value="3">Preferred Type of Work (DS)</option>
+                        <option value="4">Preferred Type of Work (ST)</option>
+                    </select>
+                    <select class="form-control" name="answer">
+                        <option value="10">Application Support</option>
+                        <option value="11">Change Management</option>
+                        <option value="12">Database Management</option>
+                        <option value="13">Development / Application Support</option>
+                        <option value="14">Business Continuity Planning</option>
+                        <option value="15">IT Audit</option>
+                        <option value="16">JAVA Development</option>
+                        <option value="17">Production Server Support</option>
+                        <option value="18">Project Management</option>
+                    </select><br/>
+                    <!--
+                    <input type="number" id="accountmappingid" name="ACCOUNT_ID"></input><br/>
+                    <br/><input type="number" name="question"><br/>
+                    <br/><input type="number" name="answer"><br/>
+                    <br/><input type="submit" class="btn btn-success">
+                    -->
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="addBtn" type="submit" class="btn btn-success">Add</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(
+        function(){ 
+            $('#addBtn').click(
+                function(){
+                    $('.addMappingForm').submit();
+                }
+            );
+        }
+    );
+</script>

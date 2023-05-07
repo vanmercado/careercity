@@ -1,0 +1,367 @@
+body {
+  font-weight: 100;
+  font-size: 14;
+}
+
+.quiz-container {
+  margin: 0;
+  flex-direction: column;
+  background-color: #F4F9F2;
+}
+
+#quizForm {
+  min-height: 100%;
+}
+
+#quizWorkdayId, #quizName {
+  width: 50%;
+  text-align: center;
+  margin-left: 25%;
+}
+
+#quizWorkdayId::placeholder, #quizName::placeholder {
+  font-size: 1.2rem;
+}
+
+.workday-id-row {
+  padding: 0 20px;
+}
+
+#quizSection {
+  flex: 1;
+  height: 100%;
+}
+
+.form-check-label {
+  padding: 0em 1em 0em 0em;
+}
+
+.itemtitle {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  color: #fff;
+  display: block;
+  margin: 0 auto;
+}
+
+.item {
+  align: center;
+  text-align: center;
+  width: 4%;
+  height: 100% !important;
+  float: left;
+  background-color: #4B286D;
+  border: 1px solid white;
+  min-height: 750px;
+}
+
+.info {
+  text-align: left;
+  float: left;
+  border-radius: 0;
+  background-color: rgba(255, 255, 255, 1);
+  display: none;
+  padding: 2%;
+  position: relative;
+  height: 100% !important;
+  min-height: 750px;
+}
+
+#info1 {
+  background-image: url('../img/quiz/TELUS Critters/Lion_Cub_Standing_L_Looking_34L_Sh_LR_RGB.png');
+  background-size: 55%;
+  background-repeat: no-repeat;
+  background-position: 90% 50%;
+}
+
+#info2 {
+  background-image: url('../img/quiz/TELUS Critters/Lion_Cub_Facing_Right_Creeping_Sh_LR_RGB.png');
+  background-size: 51%;
+  background-repeat: no-repeat;
+  background-position: 19% 78%;
+}
+
+#info3 {
+  background-image: url('../img/quiz/TELUS Critters/Panda_Family_Snow_BH_d.png');
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: 50% 85%;
+}
+
+#info4 {
+  background-image: url('../img/quiz/TELUS Critters/Panda_Baby_on_Back_FaceFwd_0.jpg');
+  background-size: 40%;
+  background-repeat: no-repeat;
+  background-position: 10% 85%;
+}
+
+#info5 {
+  background-image: url('../img/quiz/TELUS Critters/Lion_Lying_Down_On_Back_Sh_D_R.png');
+  background-size: 51%;
+  background-repeat: no-repeat;
+  background-position: 10% 75%;
+}
+
+#info6 {
+  background-image: url('../img/quiz/TELUS Critters/Lion_RghtPawUp_FreeArm_BH_d_R.png');
+  background-size: 43%;
+  background-repeat: no-repeat;
+  background-position: 6% 70%;
+}
+
+.divBtnsCont {
+  position: absolute;
+  bottom: 12px;
+  width: 94%;
+}
+
+.divBtns {
+  position: relative;
+  width: 100%;
+}
+
+.critters {
+  position: relative;
+  width: 94%;
+  text-align: center;
+  border: 1px solid black;
+  padding: 0;
+}
+
+#startBtn {
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+  margin-top: 25px;
+}
+
+#back {
+  position: relative;
+  float: left;
+}
+
+.questionNext {
+  position: relative;
+  float: right;
+}
+
+h2 {
+  color: #66CC00;
+  text-align: center;
+  font-weight: 100;
+}
+
+h4 {
+  font-weight: 100;
+}
+
+h5 {
+  color: #66CC00;
+  text-align: center;
+  font-weight: 100;
+}
+
+p {
+  color: #880B79;
+  font-size: 20;
+  font-weight: 100;
+  text-align: left;
+}
+
+button {
+  cursor: pointer;
+  font-size: 16;
+  width: 80;
+  height: 40;
+  text-align: center;
+  background-color: #66CC00;
+  color: white;
+  border: none;
+  /* border-radius: 0 !important; */
+  border-radius: 4px !important;
+  font-weight: 500;
+}
+
+button:disabled,
+button[disabled] {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+input {
+  display: inline-block;
+}
+
+.row {
+  clear: both;
+}
+
+.column {
+  width: 50%;
+  box-sizing: border-box;
+  padding: 10px;
+  float: left;
+}
+
+/* Checkbox Style */
+.form-check-label {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.form-check-label input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1.3rem;
+  width: 1.3rem;
+  background-color: #ccc;
+}
+
+/* On mouse-over, add a grey background color */
+.form-check-label:hover input ~ .checkmark {
+  background-color: #808080;
+}
+
+/* When the checkbox is checked, add a blue background */
+.form-check-label input:checked ~ .checkmark {
+  background-color: #4B286D;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  font-size: 1rem;	
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.form-check-label input:checked ~ .checkmark:after {
+  width: 0.3rem;
+  height: 0.8rem;
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.form-check-label .checkmark:after {
+  left: 8px;
+  top: 4px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/* Radio Button */
+.checkmark-radio{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1.2rem;
+  width: 1.2rem;
+  background-color: #ccc;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.form-check-label:hover input ~ .checkmark-radio {
+  background-color: #808080;
+}
+
+/* When the radio button is checked, add a blue background */
+.form-check-label input:checked ~ .checkmark-radio {
+  background-color: #4B286D;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark-radio:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.form-check-label input:checked ~ .checkmark-radio:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.form-check-label .checkmark-radio:after {
+  top: .3rem;
+  left: .3rem;
+  width: .6rem;
+  height: .6rem;
+  border-radius: 50%;
+  background: white;
+}
+
+.disclaimer{
+  height: 50%;
+}
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+@media all and (max-width: 768px)  {
+  .col-md-4[name="required2"],.col-md-4[name="required3"],.col-md-4[name="required4"] {
+    float: left !important;
+    width: 33.3% !important;
+  }
+}
+
+@media all and (max-width: 1230px) {
+
+  .disclaimer {
+    height: 40%;
+  }
+
+  .disclaimer div.mt-auto.p-2 {
+    width: 50%;
+  }
+
+  div#question2 div .col-md-4, div#question10 div .col-md-4 {
+    float: left !important;
+    width: 33.3% !important;
+  }
+
+  div#q6div.col-md-6,div#q7divSub.col-md-6, div#q8div.col-md-6,div#q9div.col-md-6 {
+    float: left !important;
+    width: 50% !important;
+  }
+
+  .info{
+    width: 100% !important;
+    min-width: 922px;
+  }
+
+  div.item.d-flex.justify-content-center {
+    background-color: red;
+    display: none !important;
+  }
+
+}
+
+.required {
+	color: red;
+	font-weight: bold;
+}

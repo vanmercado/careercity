@@ -1,0 +1,25 @@
+@font-face{
+	font-family: 'TELUS-Web';
+	src: url("../font/telus-font.woff2");
+}
+body{
+	font-family: 'TELUS-Web', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+}
+.quiz-container {
+	min-height:100%;
+}
+.account-container{
+	background-size: cover;
+	background-attachment: fixed;
+	min-height:100%;
+}
+h1, h2, h3, h4, h5, h6{
+	font-weight: 100 !important;
+}
+.ti-logo{
+	margin-left: -5vh;
+}
+.navbar-brand{
+	margin-right: 0 !important;
+}
+

@@ -1,0 +1,30 @@
+/*
+.table {
+    height: 100px;
+    width: 1100px;
+}
+*/
+
+.columns1 {
+    width: 100px;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    border: 0;
+}
+
+.editablecolumnsstyle {
+    width: 100px;
+    border: 0;
+}
+
+.columnhidden {
+    display: none;
+}
+
+.image-hero{
+    margin: 0 auto;
+    border: 1px solid #555;
+    border-radius: 2px 2px;
+}

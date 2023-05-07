@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Career City Admin Dashboard</title>
+<div th:replace="fragments/headplugs"></div>
+</head>
+<body>
+	this is upload image file
+	<form th:action="@{/upload}" method="post"
+		enctype="multipart/form-data">
+		<input type="file" name="file"> <input type="submit"
+			value="uploadfile">
+	</form>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Career City Admin Dashboard</title>
+<div th:replace="fragments/headplugs"> </div>
+
+</head>
+<body>
+
+ <div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-2 sidenav"><br/>
+      <div th:replace="fragments/navbar"> </div>
+    </div>
+
+    <div class="col-sm-10">
+    
+   <!--  <div th:replace="fragments/headerfrag"></div> -->
+		      <h4>Users<span><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#adduser">
+               Open modal
+              </button></span></h4>
+		      <hr>
+		      <table id="userspage" class="table table-striped" >
+		  
+			  <thead>
+	            <tr>
+	                <!-- <th class="columnhidden">*</th> -->
+	                <th>User Id</th>
+	                <th>First Name</th>
+	                <th>Last Name</th>
+	                <th>Employee Id</th>
+	            	<th>Department</th>
+	                <th>Active</th>
+                    <th>Options</th>
+                    
+	                 
+	            </tr>
+	        	</thead>
+		  	<tbody >
+		  
+		       	<tr th:each="userslist : ${alluserslist}">
+		       	
+				      <td  th:text="${userslist.USER_ID}"></td>
+				      <td th:text="${userslist.firstname}"></td>
+				      <td th:text="${userslist.lastname}"></td>
+				      <td th:text="${userslist.username}"></td>
+				      <td th:text="${userslist.USER_GROUP}"></td>
+				      <td th:text="${userslist.USER_STATUS}"></td>
+				     
+
+				   	  <!-- <td><button type="button" class="btn btn-primary"><a th:href="@{'/edit/' + ${userslist.USER_ID}}"><span style=color:black>Edit User Details</span></a></button><p></p> -->
+				   	      <!-- <button type="button" class="btn btn-warning"><a th:href="@{'/resetPW/' + ${userslist.USER_ID}}"><span style=color:black>Reset Password</span></a></button> -->
+
+				   	  <td>
+				   	  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edituserdetails" 
+				     id="editUsers">Edit User Details</button>
+				     
+
+				   	  
+				   	  
+				   	  </td>
+				
+				   
+						
+		      	</tr>
+		      </tbody>
+		      
+		      <tfoot>
+	            <tr>
+	                <th class="columnhidden">*</th>
+	                <th>First Name</th>
+	                <th>Last Name</th>
+	                <th>Employee Id</th>
+	                <th>Department</th>
+	                <th>Active</th>
+                    <th>Options</th>
+				
+				</tr>
+	        	</tfoot>
+				
+		  </table> 
+		  
+		  
+		     
+      
+            </div>
+            
+   
+             
+          </div>
+        </div>
+
+<div th:replace="fragments/modals/editusers"></div>
+<div th:replace="fragments/modals/adduser"></div>
+<div th:replace="fragments/footplugs"> </div>
+</body>
+</html>

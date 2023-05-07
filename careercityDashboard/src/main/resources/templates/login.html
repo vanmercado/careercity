@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" lang="en">
+<head>
+<!-- Meta, title, CSS, favicons, etc. -->
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Career City Portal </title>
+<!-- Bootstrap -->
+<link th:href="@{/lib/gentelella-1.4.0/vendors/bootstrap/dist/css/bootstrap.min.css}" rel="stylesheet" />
+<!-- Font Awesome -->
+<link th:href="@{/lib/gentelella-1.4.0/vendors/font-awesome/css/font-awesome.min.css}" rel="stylesheet" />
+<!-- NProgress -->
+<link th:href="@{/lib/gentelella-1.4.0/vendors/nprogress/nprogress.css}" rel="stylesheet" />
+<!-- Animate.css -->
+<link th:href="@{/lib/gentelella-1.4.0/vendors/animate.css/animate.min.css}" rel="stylesheet" />
+<!-- Custom Theme Style -->
+<link th:href="@{/lib/gentelella-1.4.0/build/css/custom.min.css}" rel="stylesheet" />
+<link th:href="@{/CSS/index.css}" rel="stylesheet" />
+</head>
+<style>
+  .UniqueFullWidth .input-group-text {
+    width: 48px;
+    border-right: none;
+    background-color: #ffffff;
+  }
+  .UniqueFullWidth [class^="fa-"], [class*=" fa-"] {
+    display: inline-block;
+    width: 100%;
+  }
+  .UniqueFullWidth .LoginInput {
+    border-left: none;
+  }
+  #user-icon {
+    width: 5%;
+    position: absolute;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 8px;
+    padding: 0px;
+    float: right;
+    left: 0%;
+  }
+  #user-input {
+    padding-left: 30px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    margin-bottom: 10px;
+  }
+  #loginBtn {
+    margin-top: 15px;
+    width: 100%;
+  }
+  .separator {
+    margin-top: 30px;
+  }
+  #loginBtn{
+    background-color:#4b286d;
+  }
+</style>
+<body class="login">
+	<div>
+		<a class="hiddenanchor" id="signup"></a>
+		<a class="hiddenanchor" id="signin"></a>
+		<div class="login_wrapper">
+			<div class="animate form login_form">
+				<section class="login_content">
+					<form th:action="@{/login}" method="POST">
+						<h1>Career City Portal</h1>
+						<div th:if="${param.error}" class="alert alert-danger">Invalid credentials!</div>
+						<div th:if="${param.logout}" class="alert alert-success">You have successfully logged out</div>
+	                	<div>
+	                		<i id="user-icon" class="fa fa-user"></i>
+	                		<input id="user-input" type="text" class="form-control" placeholder="Username" name="username" required></input>
+	                	</div>
+						<div>
+		                	<div>
+		                		<i id="user-icon" class="fa fa-lock"></i>
+		                		<input id="user-input" type="password" class="form-control" placeholder="Password" name="password" required></input>
+		                	</div>
+		                </div>
+						<div>
+							<button id="loginBtn" class="btn btn-success submit" type="submit">Login</button>
+						</div>
+						<div class="clearfix"></div>
+						<div class="separator">
+							<div class="clearfix"></div>
+							<br />
+							<div>
+								<h1>
+									<img alt="CC-logo" th:src="@{/images/cc-logo.png}" class="img-circle profile_img" style="width: 20%;margin: 0;"></img>
+									<span>C<small>AREER</small> C<small>ITY</small></span>
+								</h1>
+								<p>TELUS International Philippines</p>
+							</div>
+						</div>
+					</form>
+				</section>
+			</div>
+			<div id="register" class="animate form registration_form">
+				<section class="login_content">
+					<form>
+						<h1>Create Account</h1>
+						<div>
+							<input type="text" class="form-control" placeholder="Username" required></input>
+						</div>
+						<div>
+							<input type="email" class="form-control" placeholder="Email" required></input>
+						</div>
+						<div>
+							<input type="password" class="form-control" placeholder="Password" required></input>
+						</div>
+						<div>
+							<a href="" class="btn btn-default submit">Submit</a>
+						</div>
+						<div class="clearfix"></div>
+						<div class="separator">
+							<p class="change_link">Already a member ?
+							    <a href="#signin" class="to_register">Log in</a>
+							</p>
+							<div class="clearfix"></div>
+							<br />
+							<div>
+								<h1>
+									<img alt="CC-logo" th:src="@{/images/cc-logo.png}" class="img-circle profile_img" style="width: 20%;margin: 0;"></img>
+									<span>C<small>AREER</small> C<small>ITY</small></span>
+								</h1>
+								<p>TELUS International Philippines</p>
+							</div>
+						</div>
+					</form>
+				</section>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

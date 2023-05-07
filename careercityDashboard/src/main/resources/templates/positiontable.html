@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Career City Admin Dashboard</title>
+
+ <div th:replace="fragments/headplugs"> </div>
+</head>
+<body>
+
+
+			 <div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-2 sidenav"><br/>
+      <div th:replace="fragments/navbar"> </div>
+    </div>
+
+    <div class="col-sm-10">
+    			<div th:replace="fragments/headerfrag"> </div>
+		       <h4>Non-Agent Position Table<span> <button class="btn btn-info" data-toggle="modal" data-target="#addposition">Add new position</button></span></h4>
+		      <hr/>
+		       <table id="positiontable" class="table table-striped" >
+		  
+			  <thead>
+	            <tr>
+	                   <th>Position Id</th>
+	                   <th>Job Profile</th>
+	                   <th >Department</th>
+	                   <th >Support Type</th>
+	                   <th class="columnhidden">Job Requisition</th>
+	                   <th class="columnhidden">Description</th>
+	                   <th class="columnhidden">Certification</th>
+	                   <th class="columnhidden">Educational Background</th>
+	                   <th class="columnhidden">Experience Required</th>
+	                   <th class="columnhidden">Skills Required</th>
+	                   <th class="columnhidden">Other Skills</th>
+	                   <th class="columnhidden">Category</th>
+	                   <th class="columnhidden">Image Path</th>
+	                   <th class="columnhidden">Trainings</th>
+	                   <th class="columnhidden">Created BY</th>
+	                   <th>Edit Details</th>
+                       <th>View Mapping</th>
+	                 
+	            </tr>
+	        	</thead>
+		  <tbody >
+		       	<tr th:each="position : ${allpositions}">
+				      <td th:text="${position.POSITION_ID}"></td>
+				      <td th:text="${position.JOB_PROFILE}"></td>
+				      <td th:text="${position.DEPARTMENT}"></td>
+				      <td class="columnhidden" th:text="${position.IMAGE_PATH}"></td>
+				      <td th:text="${position.SUPPORT_TYPE}"></td>
+				      <td class="columnhidden" th:text="${position.JOB_REQ}"></td>
+				      <td class="columnhidden" th:text="${position.DESCRIPTION}"></td>
+				      <td class="columnhidden" th:text="${position.CERTIFICATION}"></td>
+				      <td class="columnhidden" th:text="${position.EDUCATIONAL_BACKGROUND}"></td>
+				      <td class="columnhidden" th:text="${position.EXPERIENCE_REQUIRED}"></td>
+				      <td class="columnhidden" th:text="${position.SKILLS_REQUIRED}"></td>
+				      <td class="columnhidden" th:text="${position.OTHER_SKILLS}"></td>
+				      <td class="columnhidden" th:text="${position.CATEGORY}"></td>
+				      <td class="columnhidden" th:text="${position.TRAININGS}"></td>				   
+				      <td class="columnhidden" th:text="${position.CREATED_BY}"></td>
+				      
+				   	  <td><button type="button" id="editpositiondetails" class="btn btn-primary" data-toggle="modal" data-target="#positiondetails"  >
+						 <i class="material-icons">edit</i>
+						</button></td>
+						<td>
+						<form th:action="@{/positionmaps/} + ${position.POSITION_ID}" method="get">
+						<button  class="btn btn-success" >
+						View Mapping
+						</button>
+						</form>
+						</td>
+		      	</tr>
+		      </tbody>
+		      
+		     <tfoot>
+	            <tr>
+	                   <th>Position ID</th>
+	                   <th>Job Profile</th>
+	                   <th>Department</th>
+	                   <th>Support Type</th>
+	                   <th class="columnhidden">Description</th>
+	                   <th class="columnhidden">Certification</th>
+	                   <th class="columnhidden">Educational Background</th>
+	                   <th class="columnhidden">Experience Required</th>
+	                   <th class="columnhidden">Skills Required</th>
+	                   <th class="columnhidden">Other Skills</th>
+	                   <th class="columnhidden">Category</th>
+	                   <th class="columnhidden">Image Path</th>
+	                   <th class="columnhidden">Trainings</th>             
+
+	                   <th class="columnhidden">Created By</th>
+	                   <th>Edit Details</th>
+                       <th>Edit Mapping</th>
+	               
+				
+				</tr>
+	        	</tfoot>
+				
+	        	
+				
+		  </table> 
+		  
+		  
+		     
+      
+            </div>
+            
+   
+             
+          </div>
+        </div>
+   
+ 
+  <div th:replace="fragments/modals/addposition"></div>
+  <div th:replace="fragments/modals/positionedit1"></div>	
+  <div th:replace="fragments/footplugs"> </div>
+</body>
+</html>

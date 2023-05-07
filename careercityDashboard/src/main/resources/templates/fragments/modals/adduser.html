@@ -1,0 +1,134 @@
+<div id="addnewuser" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="bar">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <div class="row">
+                <div>
+                    <h4 style="color: white; text-align: center; font-weight: bold;">
+                        <i class="fa fa-plus" style="font-weight: 100; margin-right: 8px"></i>New User
+                    </h4>
+                </div>
+                <!--
+                <p>&nbsp;</p>
+                -->
+            </div>
+        </div>
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="container-fluid" id="modalForm">
+                            <form id="addForm" th:action="@{/adduser}" th:object="${newUser}" method="POST">
+                                <div style="display: block; margin-top: 5px; margin-bottom: 5px">
+                                    <div id="form-group" style="padding: 0px; margin-top: 10px; margin-bottom: 10px;">
+                                        <div >
+                                            <div style="font-weight: bold; ">First Name</div>
+                                            <div>
+                                                <input class="form-control" type="text" id="firstname" th:field="*{firstname}" placeholder="John"></input>
+                                                <span style="color: red" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">Firstname Error</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="form-group" style="padding: 0px; margin-top: 10px; margin-bottom: 10px;">
+                                        <div>
+                                            <div style="font-weight: bold; ">Last Name</div>
+                                            <div>
+                                                <input class="form-control" type="text" th:field="*{lastname}" placeholder="Doe"></input>
+                                                <span style="color: red" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">Lastname Error</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="form-group" style="padding: 0px; margin-top: 10px; margin-bottom: 10px;">
+                                    <div>
+                                        <div style="font-weight: bold; ">Email</div>
+                                        <div>
+                                            <input class="form-control" type="email" th:field="*{email}" placeholder="john.doe@email.com"></input>
+                                            <span style="color: red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="form-group" style="padding: 0px; margin-top: 18px; margin-bottom: 18px;">
+                                    <div>
+                                        <div style="font-weight: bold; ">Password</div>
+                                        <div>
+                                            <input class="form-control" type="password" th:field="*{PASSWORD}" placeholder="Password"></input>
+                                            <span style="color: red" th:if="${#fields.hasErrors('PASSWORD')}" th:errors="*{PASSWORD}">Password Error</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="form-group">
+                                    <div>
+                                        <div style="font-weight: bold; ">Employee ID</div>
+                                        <div>
+                                            <input class="form-control" type="text" th:field="*{username}" id="username" placeholder="Employee ID"></input>
+                                            <span style="color: red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="form-group" style="padding: 0px; margin-top: 10px; margin-bottom: 14px;">
+                                    <div>
+                                        <div style="font-weight: bold; ">User Group</div>
+                                        <div>
+                                            <select class="form-control" id="USER_GROUP" th:field="*{USER_GROUP}">
+                                                <option value="">-----Select-----</option>
+                                                <option value="CCO">CONTACT CENTER OPERATION</option>
+                                                <option value="DS">DIGITAL SOLUTION</option>
+                                                <option value="ST">SUPPORT TYPE</option>
+                                            </select>
+                                            <span style="color: red" th:if="${#fields.hasErrors('USER_GROUP')}" th:errors="*{USER_GROUP}">User Group Error</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="columnhidden">
+                                    <p>
+                                        <input type="text" name="USER_STATUS" th:value="active"></input>
+                                    </p>
+                                </div>
+                                <div id="form-group" style="padding: 0px; margin-top: 10px; margin-bottom: 10px;">
+                                    <div>
+                                        <div style="font-weight: bold; ">Role</div>
+                                        <div id="form-group">
+                                            <select class="form-control" id= "roles" th:field="*{roles}">
+                                                <option value="">-----Select-----</option>
+                                                <option value="1">SUPERUSER</option>
+                                                <option value="2">USER</option>
+                                            </select>
+                                            <span style="color: red" th:if="${#fields.hasErrors('roles')}" th:errors="*{roles}">Role Error</span>
+                                        </div>
+                                    </div>
+                                </div>
+                               	<div class="modal-footer">
+                        			<div style="float: right; vertical-align: top">
+                           				 <div style="display: inline-block">
+                                				<input type="button" class="btn btn-success" data-toggle="modal" data-target="#confirmSaveuser" value="Add"></input>
+                           				 </div>
+                           			 	<div style="display: inline-block">
+                                				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            			</div>
+                       				</div>
+                    			</div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal content-->
+        </div>
+    </div>
+</div>
+<script>
+$(document).ready(function(){
+	$("#submitBtn").click(function(){
+		$("#confirmSaveuser").modal('show');
+	});
+	
+	$("#yesBtn").click(function(){
+		$("#addForm").submit();
+	});
+	
+	
+});
+</script>
+<div th:replace="fragments/modals/presavinguser"></div>

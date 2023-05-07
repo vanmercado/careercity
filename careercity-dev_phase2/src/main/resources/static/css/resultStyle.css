@@ -1,0 +1,176 @@
+/* Start Change - Daryll Moya - 02-MAR-2021 */
+.nav-link.retake-quiz {
+  font-size: 1.5rem;
+  /* padding: 1rem 0 2.3rem 1rem !important; */
+  padding: 1.2rem 1.2rem !important;
+  overflow: hidden;
+  /* height: 3rem; */
+  height: 4rem;
+}
+/* End Change - Daryll Moya - 02-MAR-2021 */
+
+.nav-link.retake-quiz:before:hover i {
+  background-color: red;
+}
+
+.result-background {
+  background-color: #f4f9f2;
+  min-height: 91.5vh;
+  padding: 1rem;
+}
+
+.result-container {
+  min-height: 30vh;
+  margin: 1rem 0 0 0;
+}
+
+.result-container .result-carousel {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.result-card {
+  border-radius: 0;
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  box-shadow: 1px 1px 10px 1px black;
+  outline-color: #4b286d;
+  background-color: white;
+  transition: 0.3s;
+}
+
+.result-card .result-top-content {
+  margin: 0;
+  text-align: left;
+}
+
+.result-card .result-carousel-image {
+  padding: 0;
+}
+
+.result-card .result-carousel-image img {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 1px 1px black;
+  padding: 0;
+  border-radius: 0;
+  /* Start Change - Daryll Moya - 02-MAR-2021 */
+  /*
+  height: 25vh !important;
+  width: 17vw !important;
+  */
+  height: 2.2in !important;
+  width: 2.2in !important;
+  /* End Change - Daryll Moya - 02-MAR-2021 */
+}
+
+.result-card .result-carousel-title {
+  padding: 0 0 0 1rem;
+}
+
+.result-card .result-carousel-subtitle * {
+  font-size: 0.9rem;
+  margin: auto auto 0.3rem auto;
+}
+
+.result-card .result-body {
+  padding-top: 1rem;
+  padding-bottom: 0;
+}
+
+.result-sub-desc {
+  padding: 1% 0 3px 0;
+  border: none;
+  border-bottom: 3px solid #4b286d;
+  margin: 1rem 0 0 0;
+  color: #4b286d;
+}
+
+.result-card a {
+  font-size: 0.9rem;
+  color: #66cc00;
+  cursor: pointer;
+}
+
+.result-card a:hover {
+  text-decoration: underline;
+  color: #66cc00;
+  opacity: 0.8;
+}
+
+.card-text.result-sub-desc-text {
+  text-align: justify;
+  margin: 3% 0;
+  overflow-wrap: break-word;
+  white-space: normal;
+  text-overflow: clip;
+}
+
+.slick-prev {
+  left: -8vw !important;
+  width: 10vh !important;
+  height: 10vh !important;
+  opacity: 0.5;
+  transition: 0.3s;
+}
+
+.slick-next {
+  right: -8vw !important;
+  width: 10vh !important;
+  height: 10vh !important;
+  opacity: 0.5;
+  transition: 0.3s;
+}
+
+.slick-prev:hover, .slick-next:hover {
+  opacity: 1;
+  transition: 0.3s;
+}
+
+.slick-slide {
+  height: auto !important;
+  margin: 0 2vw 0 2vw;
+  width: 70vw;
+}
+
+.row.no-matched-result {
+  background-color: white;
+  padding: 5vh 15vh;
+}
+
+.row.no-matched-result .no-matched-result-text {
+  padding: 10vh 0;
+  text-align: center;
+}
+
+.row.no-matched-result .no-matched-result-image {
+  text-align: center;
+}
+
+/*
+.row.no-matched-result .no-matched-result-image img {
+  #height: 60vh;
+}
+*/
+
+#googleforms {
+  text-decoration: none;
+  color: #248700;
+  /* margin-left: 31%; */
+}
+
+#workdaylink {
+  text-decoration: none;
+  color: #248700;
+}
+
+/* Start Add - Daryll Moya - 16-MAR-2021 */
+.img-center {
+  object-fit: cover;
+  width: 90vh;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+/* End Add - Daryll Moya - 16-MAR-2021 */

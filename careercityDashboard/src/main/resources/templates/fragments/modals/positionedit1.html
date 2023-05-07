@@ -1,0 +1,159 @@
+<!-- Modal -->
+<div id="positiondetails" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <form th:action="@{/updateposition}" method="post"  enctype="multipart/form-data">
+                <div class="modal-header">
+                    <div class="modal-title">
+                        <h3>DIGITAL SERVICE & SUPPORT DETAILS</h3>
+                        <small>This data are shown in the gallery and results</small>
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <h6>Position Status</h6>
+                    <div class="form-group row">
+                        <label class="col-md-2 font-weight-bold text-right">Category</label>
+                        <div class="col-md-5">
+                            <select name="CATEGORY" id="category">
+                                <option value="DS">Active for Digital Solutions</option>
+                                <option value="ST">Active for Support</option>
+                                <option value="NA">In-Active</option>
+                            </select>
+                        </div>
+                    </div>
+                    <hr></hr>
+                    <div class="form-group row">
+                        <label class="col-md-2 font-weight-bold text-right">Job Requisition</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="jobreq" name="JOB_REQ"></input>
+                        </div>
+                    </div>
+                    <hr/>
+                    <!-- Hidden -->
+                    <div class="columnhidden">
+                        <p>Position Id
+                            <span>
+                                <input type="number" id="positionid" name="POSITION_ID"></input>
+                            </span>
+                        </p>
+                    </div>
+                    <!-- Hidden -->
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-md-4 font-weight-bold text-right">Job Profile</label>
+                                <div class="col-md-8">
+                                    <input class="form-control" type="text" id="jobprofile" name="JOB_PROFILE"></input>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-md-4 font-weight-bold text-right">Department</label>
+                                <div class="col-md-8">
+                                    <input class="form-control" type="text" id="department" name="DEPARTMENT"></input>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Row #2 -->
+                    <div class="form-group row">
+                        <div class="col-md-2">
+                            <div class="card-body">
+                                <label class="text-right font-weight-bold">Image Path</label>
+                            </div>
+                            <img class="card-img-top" id="positionImagePath"></img>
+                        </div>
+                        <div class="col-md-5">
+                            <input class="form-control" type="text" id="imagepath"
+                                name="IMAGE_PATH"></input>
+                        </div>
+                        <div class="col-md-5 text-right">
+                            <input id="uploadImageFile" type="file" name="file"></input>
+                            <!--
+                            <a class="btn btn-primary" th:href="@{/uploadpage}">Upload Image</a>
+                            -->
+                        </div>
+                    </div>
+                    <!-- Row #3 -->
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-md-4 font-weight-bold text-right">Support Type</label>
+                                <div class="col-md-8">
+                                    <input class="form-control" type="text" id="supporttype" name="SUPPORT_TYPE"></input>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-md-4 font-weight-bold text-right">Educational Background</label>
+                                <div class="col-md-8">
+                                    <input class="form-control" type="text" id="educationalback" name="EDUCATIONAL_BACKGROUND"></input>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Row #4 -->
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-md-4 font-weight-bold text-right">Experience Required</label>
+                                <div class="col-md-8">
+                                    <input class="form-control" type="text" id="expreq" name="EXPERIENCE_REQUIRED"></input>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6"></div>
+                    </div>
+                    <!-- Row #5 -->
+                    <div class="form-group row">
+                        <label class="col-md-2 font-weight-bold text-right">Description</label>
+                        <div class="col-md-10">
+                            <textarea class="form-control " rows="6" id="description" name="DESCRIPTION"></textarea>
+                        </div>
+                    </div>
+                    <!-- Row #6 -->
+                    <div class="form-group row">
+                        <label class="col-md-2 font-weight-bold text-right">Skills Required</label>
+                        <div class="col-md-10">
+                            <textarea class="form-control " rows="4" id="skillsreq" name="SKILLS_REQUIRED"></textarea>
+                        </div>
+                    </div>
+                    <!-- Row #7 -->
+                    <div class="form-group row">
+                        <label class="col-md-2 font-weight-bold text-right">Certification</label>
+                        <div class="col-md-10">
+                            <textarea class="form-control" id="certification" name="CERTIFICATION"></textarea>
+                        </div>
+                    </div>
+                    <!-- Row #8 -->
+                    <div class="form-group row">
+                        <label class="col-md-2 font-weight-bold text-right">Other Skills</label>
+                        <div class="col-md-10">
+                            <textarea class="form-control " rows="4" id="otherskills" name="OTHER_SKILLS"></textarea>
+                        </div>
+                    </div>
+                    <!-- Row #9 -->
+                    <div class="form-group row">
+                        <label class="col-md-2 font-weight-bold text-right">Trainings</label>
+                        <div class="col-md-10">
+                            <textarea class="form-control" rows="6" id="trainings" name="TRAININGS"></textarea>
+                        </div>
+                    </div>
+                    <div class="columnhidden">
+                        <label class="text-right  font-weight-bold">Created By</label>
+                        <div class="col-md-10">
+                            <input class="form-control" type="text" name="CREATED_BY" th:value="${modify_by}"></input>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <input type="submit" class="btn btn-success" value="Save"></input>
+        </div>
+    </div>
+</div>

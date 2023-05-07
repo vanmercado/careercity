@@ -1,0 +1,97 @@
+<head th:insert="pages/fragments/admin_head"></head>
+<div class="container body">
+<div class="main_container">
+<div th:insert="pages/admin :: left_col"></div>
+<div th:insert="pages/admin :: top_nav"></div>
+
+		<!-- Page Content -->
+		<div class="right_col" role="main">
+			<div class="">
+				<div class="page-title">
+					<div class="title_left"></div>
+					<div class="title_right"></div>
+				</div>
+				<div class="clearfix"></div>
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="x_panel">
+							<div class="x_title">
+								<ul class="nav navbar-left panel_toolbox">
+									<li>
+										<div class="title_left">
+											<h3>
+												<strong>Manage Images</strong>
+											</h3>
+										</div>
+									</li>
+								</ul>
+								<ul class="nav navbar-right panel_toolbox">
+<!-- 									<li> -->
+<!-- 										<a 	class="btn btn-success" -->
+<!-- 											data-toggle="modal" data-target="#addsite" -->
+<!-- 											style="color: white;"><i class="fa fa-plus" style="font-weight: 100;"></i> Upload Image</a>	 -->
+<!-- 									</li> -->
+								</ul>
+								<div class="clearfix"></div>
+							</div>
+							<div class="x_content">
+								<div th:if="${success}" class="alert alert-success" role="alert">
+								  	<span th:text="${success}"></span>
+								</div>
+								<div th:if="${error}" class="alert alert-danger" role="alert">
+								  	<span th:text="${error}"></span>
+								</div>
+								<div th:if="${deleteOk}" class="alert alert-warning" role="alert">
+								  	<span th:text="${deleteOk}"></span>
+								</div>
+								<div>
+									<form th:action="@{/admin/uploadimage}" method="post" enctype="multipart/form-data">
+										<table>
+											<tr>
+												<td>
+													<input type="file" name="file">
+												</td>
+												<td>
+													<button class="btn btn-success btn-sm" type="submit">Add Image</button>
+												</td>
+											</tr>
+										</table>
+									</form>
+								</div>
+								<div class="table-responsive">
+									<table id="datatable" class="userspage table table-striped table-bordered" style="width: 25%">
+										  <thead>
+								            <tr>
+								                <th>Image</th>
+							                    <th>Option</th>  
+								            </tr>
+								        	</thead>
+									  	  <tbody >
+									   		<tr th:each="image : ${imageList}">
+												<td>
+													<img class="imagePic" th:src="${image.filename}" alt="" width="100" height="100x" style="border: 1px solid gray">
+												</td>
+												<td style="vertical-align: middle;">
+													 <form th:action="@{/admin/deleteimage}" method="POST">
+													      <input type="hidden" name="filename" th:value="${image.filename}">
+													      <button class="btn btn-danger">Delete</button>
+													</form>
+												</td>
+											</tr>
+									      </tbody>
+									  </table> 
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				</div>
+			</div><!-- div.right_col -->
+	<!-- /page content -->
+	
+</div><!-- div.main_container -->
+</div><!-- div.container_body -->
+<div th:insert="pages/admin :: footer"></div>
+<div th:replace="fragments/modals/AddNewSite"></div>
+<div th:replace="pages/fragments/admin_foot"></div>

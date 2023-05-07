@@ -1,0 +1,88 @@
+@font-face{
+  font-family: "TELUS-Web";
+  src: url("../font/telus-font.woff2");
+}
+
+body{
+  font-family: "TELUS-Web", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+
+.row.content {
+  height: 1500px;
+}
+
+/* Set gray background color and 100% height */
+.sidenav {
+  background-color: #eae6e4;
+  height: 100%;
+}
+
+/* Set black background color, white text and some padding */
+footer {
+  background-color: #555;
+  color: white;
+  padding: 15px;
+}
+
+/* On small screens, set height to 'auto' for side navigation and grid */
+@media screen and (max-width: 767px) {
+  .sidenav {
+    height: auto;
+    padding: 15px;
+  }
+  .row.content {
+    height: auto;
+  }
+}
+
+ul {
+  list-style-type: none;
+}
+
+.modal-lg{
+  max-width: 80% !important;
+}
+
+/* Bootstrap Modifications */
+.btn.btn-primary{
+  background: #4B286D;
+  border-color: #4B286D;
+}
+
+.btn.btn-primary:hover{
+  background: #6b399d;
+  border-color: #6b399d;
+}
+
+.btn.btn-success{
+  background: #66CC00;
+  border-color: #2B8000;
+}
+
+.btn.btn-success:hover{
+  background: #66CC00;
+  border-color: #2B8000;
+}
+
+#datatable td, #datatable th {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  /* padding-bottom: 0 !important; */
+  font-size: 13px;
+  width: 100%;
+  vertical-align: middle;
+}
+
+div .right_col{
+  min-height: 1200px !important;
+}
+
+.login_content {
+  text-shadow: none;
+  font-size: medium;
+}
+
+.login_wrapper {
+  margin-top: auto;
+}

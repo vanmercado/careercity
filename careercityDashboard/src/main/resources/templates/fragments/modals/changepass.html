@@ -1,0 +1,92 @@
+<div id="changePassword" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div th:replace="fragments/stylemodal"></div>
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div>
+                            <h4 class="modal-title">Change Password - 
+                                <span th:text="${user.firstname} + ' ' + ${user.lastname}"></span>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid" id="modalForm">
+                            <form th:action="@{/updateuser}" th:object="${user}" method="post" >
+                                <div class="columnhidden">
+                                    <input type="hidden" id="user_id" name="USER_ID" th:value="*{USER_ID}"></input>
+                                    <input type="text"class="form-control" id="firstname" name="firstname" th:value="*{firstname}"></input>
+                                </div>
+                                <div class="columnhidden">
+                                    <input type="text" class="form-control" id="lastname" name="lastname" th:value="*{lastname}"></input>
+                                </div>
+                                <div class="columnhidden">
+                                    <input type="email" class="form-control" id="email" name="email" th:value="*{email}"></input>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="password" class="col-sm-2 col-form-label">Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" class="form-control" id="password" name="PASSWORD" required></input>
+                                        <span style="color: red" th:if="${#fields.hasErrors('PASSWORD')}" th:errors="*{PASSWORD}">Password Error</span>
+                                    </div>
+                                </div>
+                                <div class="columnhidden">
+                                    <input type="text" class="form-control" id="username" name="username" th:value="*{username}"></input>
+                                </div>
+                                <div class="columnhidden">
+                                    <span class=hidden id="usergroup_currentval" th:text="*{USER_GROUP}"></span>
+                                    <select class="form-control" th:field="*{USER_GROUP}">
+                                        <option value="">-----Select-----</option>
+                                        <option value="CCO">CONTACT CENTER OPERATION</option>
+                                        <option value="DS">DIGITAL SOLUTION</option>
+                                        <option value="ST">SUPPORT TYPE</option>
+                                    </select>
+                                </div>
+                                <div class="columnhidden">
+                                    <span class=hidden id="userrole_currentval" th:each="userRole : *{roles}" th:text="${userRole.USER_ROLE}"></span>
+                                    <select class="form-control" th:field="*{roles}">
+                                        <option value="">-----Select-----</option>
+                                        <option value="1" >SUPERUSER</option>
+                                        <option value="2">USER</option>
+                                    </select>
+                                </div>
+                                <div class="columnhidden">
+                                    <span class="hidden" id="currentStatus" name="USER_STATUS" th:value="*{USER_STATUS}"></span>
+                                    <label th:if="${user?.USER_STATUS != null && user?.USER_STATUS == 'active'}">
+                                        <input type="checkbox" checked class="js-switch" id="initial-checked" name="USER_STATUS" th:value="active"></input>
+                                        <span id="checkBoxValue">Active</span>
+                                    </label>
+                                    <label th:if="${user?.USER_STATUS == null || user?.USER_STATUS != 'active'}">
+                                        <input type="checkbox" class="js-switch" id="initial-unchecked" name="USER_STATUS" th:value="inactive"></input>
+                                        <span id="checkBoxValue">Inactive</span>
+                                        <input type="hidden" class="js-switch" id="hiddenInput-initial-unchecked" name="USER_STATUS" th:value="inactive"></input>
+                                    </label>
+                                </div>
+                                <div class="modal-footer">
+                        			<div style="float: right; vertical-align: top">
+                            			<div style="display: inline-block">
+                               				 <input type="submit" id="addBtn" class="btn btn-danger" value="Reset"></input>
+                           				 </div>
+                            			<div style="display: inline-block">
+                                			<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            			</div>
+                        			</div>
+                   				</div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal content-->
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+    });
+</script>

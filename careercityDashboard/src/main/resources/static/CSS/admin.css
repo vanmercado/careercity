@@ -1,0 +1,437 @@
+.fa-caret-down{
+  float: right;
+  margin-top: 4px;
+  margin-right: 2px;
+  color: gray;
+}
+
+.icon-caret {
+  margin-top: -4px !important;
+}
+
+.reportRow{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.reportItem_container{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 15% 1fr;
+  margin: 0;
+  padding: 0;
+}
+
+.reportItem_title{
+  text-align: center;
+  display: grid;
+
+}
+
+.reportItem_body{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.reportItem_label_mainContainer{
+  display: grid;
+}
+
+.reportItem_label_subContainer{
+  align-self: center;
+}
+
+.reportItem_label_body{
+  display: grid;
+  grid-template-columns: 15% 1fr;
+  grid-template-areas: 
+    "color value";
+}
+
+.reportItem_label_colorValue{
+  grid-area: color;
+  font-size: smaller;
+  align-self: center;
+}
+
+.reportItem_label_itemValue{
+  grid-area: value;
+  font-size: smaller;
+}
+
+.reportItem_button{
+  align-self: end;
+}
+
+/* Multiple Select */
+select {
+  width: 30%;
+}
+
+.ms-drop span{
+  margin-left: 5px;
+}
+
+
+.dropdown_container_funcArea{
+  display: grid;
+  grid-template-areas: "blank blank this";
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.dropdown_selection_funcArea{
+  grid-area: this;
+  width: 225px;
+}
+
+.dropdown_selection_funcArea button{
+  border-radius: 25px;
+}
+
+.dropdown_container_managerId{
+  display: grid;
+  grid-template-areas: "blank blank this";
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.dropdown_selection_managerId{
+  grid-area: this;
+  width: 225px;
+}
+
+.dropdown_selection_managerId button{
+  border-radius: 25px;
+}
+
+/* Filters */
+.dropdown_selection_site button, 
+.dropdown_selection_functionalArea button, 
+.dropdown_selection_manager button, 
+.dropdown_selection_supervisor button,
+.dropdown_selection_site-surveyResult button, 
+.dropdown_selection_functionalArea-surveyResult button, 
+.dropdown_selection_manager-surveyResult button, 
+.dropdown_selection_supervisor-surveyResult button,
+.dropdown_selection_site-clicks button, 
+.dropdown_selection_functionalArea-clicks button, 
+.dropdown_selection_manager-clicks button, 
+.dropdown_selection_supervisor-clicks button{
+  border-radius: 25px;
+}
+
+.dropdown_selection_site, 
+.dropdown_selection_functionalArea, 
+.dropdown_selection_manager, 
+.dropdown_selection_supervisor,
+.dropdown_selection_site-surveyResult, 
+.dropdown_selection_functionalArea-surveyResult, 
+.dropdown_selection_manager-surveyResult, 
+.dropdown_selection_supervisor-surveyResult,
+.dropdown_selection_site-clicks, 
+.dropdown_selection_functionalArea-clicks, 
+.dropdown_selection_manager-clicks, 
+.dropdown_selection_supervisor-clicks{
+  width: 100%;
+}
+
+/*
+.ms-drop.bottom input[type=checkbox] {
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
+  font-size: 10px;
+  visibility: hidden;
+}
+
+.ms-drop.bottom input[type=checkbox]:after {
+  content: " ";
+  background-color: white;
+  display: inline-block;
+  padding-bottom: 5px;
+  color: white;
+  width: 15px;
+  height: 15px;
+  visibility: visible;
+  border: 1px solid #653694;
+  padding-left: 2px;
+  border-radius: 3px;
+}
+
+.ms-drop.bottom input[type=checkbox]:checked:after {
+  content: "\2714";
+  padding: -5px;
+  background-color: #653694;
+  display: inline-block;
+  padding-bottom: 5px;
+  color: white;
+  width: 15px;
+  height: 15px;
+  visibility: visible;
+  border: 1px solid #653694;
+  padding-left: 2px;
+  border-radius: 3px;
+}
+*/
+
+.reportTitleRow{
+  margin-top: 10px; 
+  margin-bottom: 10px
+}
+
+.reportTitleBar {
+  background-image: linear-gradient(to right, #4B286D, white);
+}
+
+.reportTitleText{
+  font-size: smaller; 
+  font-weight: bold; 
+  color: white; 
+  margin-left: 30px
+}
+
+/* USAGE REPORT */
+/*
+.filterRow1_mainContainer{
+  display: grid;
+  grid-template-columns: 25% 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "counts dateFunc"
+}
+.ytdUserCountsMainContainer{
+  grid-area: counts;
+}
+.dateFunctionalFilter_mainContainer{
+  grid-area: dateFunc;
+}
+*/
+
+.filterRow1{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "date functionalArea";
+}
+
+.datepicker_usage{
+  grid-area: date;
+}
+
+.dropdown_container_functionalArea{
+  grid-area: functionalArea;
+}
+
+.filterRow2{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "manager supervisor site";
+}
+
+.dropdown_container_manager{
+  grid-area: manager;
+}
+
+.dropdown_container_supervisor{
+  grid-area: supervisor;
+}
+
+.dropdown_container_site{
+  grid-area: site;
+}
+/* END - USAGE REPORT */
+
+/* CAREER SURVEY RESULTS */
+.filterRow1-surveyResult{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "date functionalArea";
+}
+
+.datepicker_usage-surveyResult{
+  grid-area: date;
+}
+
+.dropdown_container_functionalArea-surveyResult{
+  grid-area: functionalArea;
+}
+
+.filterRow2-surveyResult{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "manager supervisor site";
+}
+
+.dropdown_container_manager-surveyResult{
+  grid-area: manager;
+}
+
+.dropdown_container_supervisor-surveyResult{
+  grid-area: supervisor;
+}
+
+.dropdown_container_site-surveyResult{
+  grid-area: site;
+}
+/* END - CAREER SURVEY RESULTS */
+
+/* CAREER CITY CLICKS */
+.filterRow1-clicks{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "date functionalArea";
+}
+
+.datepicker_usage-clicks{
+  grid-area: date;
+}
+
+.dropdown_container_functionalArea-clicks{
+  grid-area: functionalArea;
+}
+
+.filterRow2-clicks{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "manager supervisor site";
+}
+
+.dropdown_container_manager-clicks{
+  grid-area: manager;
+}
+
+.dropdown_container_supervisor-clicks{
+  grid-area: supervisor;
+}
+
+.dropdown_container_site-clicks{
+  grid-area: site;
+}
+/* END - CAREER CITY CLICKS */
+
+.categoryTitle{
+  text-align: center;
+}
+
+table.dataTable thead th, table.dataTable thead td {
+  padding: 1px 5px;
+  border-bottom: 0px;
+}
+
+table.dataTable tbody td {
+  /* padding: 1px 5px; */
+  border-bottom: 0px;
+}
+
+table.dataTable tbody td span {
+  font-size: 12px;
+}
+
+.usageReportMainContent{
+  position: relative;
+}
+
+.tab_content1, .loading{
+  position: absolute;
+}
+
+/* Loading */
+.loading{
+  left: 0px;
+  margin-left: -12px;
+  top: 0px;
+  width: 103%;
+  height: 100%;
+   z-index: 9999; 
+  background: url(/careercitydashboard/images/loading.gif) center no-repeat #fff;
+}
+
+.ytdUserCountsMainContainer{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  margin-bottom: 8px;
+}
+
+.ytdUserCounts_container{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: 
+      "label"
+      "value";
+  justify-self: center;
+  width: 160px;
+  border-color: transparent;
+  background: transparent;
+  border-style: solid;
+  border-width: 0px;
+  border-radius: 10px;
+  opacity: 1;
+  box-shadow: rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.2) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+}
+
+.ytdUserCounts_wrapper{
+  justify-self: center;
+  text-align: center;
+}
+
+.ytdUserCounts_value, .ytdTidsCounts_value, .ytdSupportCounts_value, .ytdCcoCounts_value{
+  font-size: 20px;
+}
+
+.surveyCountsMainContainer{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "tids supp cco";
+  margin-bottom: 6px;
+}
+
+.ytdTidsCountsMainContainer{
+  grid-area: tids;
+  justify-self: center;
+  text-align: center;
+  width: 160px;
+  border-color: transparent;
+  background: transparent;
+  border-style: solid;
+  border-width: 0px;
+  border-radius: 10px;
+  opacity: 1;
+  box-shadow:
+     rgba(0, 0, 0, 0.14) 0px 2px 2px 0px,
+     rgba(0, 0, 0, 0.2) 0px 1px 1px 0px,
+     rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+}
+
+.ytdSupportCountsMainContainer{
+  grid-area: supp;
+  justify-self: center;
+  text-align: center;
+  width: 160px;
+  border-color: transparent;
+  background: transparent;
+  border-style: solid;
+  border-width: 0px;
+  border-radius: 10px;
+  opacity: 1;
+  box-shadow: rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.2) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+}
+
+.ytdCcoCountsMainContainer{
+  grid-area: cco;
+  justify-self: center;
+  text-align: center;
+  width: 160px;
+  border-color: transparent;
+  background: transparent;
+  border-style: solid;
+  border-width: 0px;
+  border-radius: 10px;
+  opacity: 1;
+  box-shadow: rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.2) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+}
+
+.ms-choice {
+  color: #000000 !important;
+}

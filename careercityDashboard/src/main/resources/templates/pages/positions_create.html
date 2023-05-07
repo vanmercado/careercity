@@ -1,0 +1,297 @@
+<head th:insert="pages/fragments/admin_head"></head>
+<div class="container body">
+    <div class="main_container">
+        <div th:insert="pages/admin :: left_col"></div>
+        <div th:insert="pages/admin :: top_nav"></div>
+        <!-- Page Content -->
+        <div class="right_col" role="main">
+            <div class="main-content">
+                <!-- Title Section -->
+                <div class="page-title">
+                    <div class="title_left"></div>
+                    <div class="title_right"></div>
+                </div>
+                <!-- Title Section -->
+                <!-- Content - Per Id -->
+                <div class="row" th:if="${position?.POSITION_ID != null || create_form == 'create_form'}">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2 th:if="${create_form == 'create_form'}">
+                                    <strong>New Position</strong>
+                                    <small>Please fill the required (
+                                        <code>*</code>) information
+                                    </small>
+                                </h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <!--<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a><ul class="dropdown-menu" role="menu"><li><a href="#">Settings 1</a></li><li><a href="#">Settings 2</a></li></ul></li><li><a class="close-link"><i class="fa fa-close"></i></a></li> -->
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <br/>
+                                <div class="col-md-12 col-sm-12 col-xs-12" th:if="${message != null}">
+                                    <div class="alert alert-success alert-dismissible fade in" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true" >x</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <form th:action="@{/admin/positions/save}" method="POST" class="form-horizontal form-label-left">
+                                    <!-- Serves as ID Mapper for Account  -->
+                                    <input type="text" th:value="${position?.POSITION_ID}" hidden="true" name="POSITION_ID"></input>
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                            <div class="form-group">
+                                                <div class="col-md-3">
+                                                    <div th:if="${clonedImagePath == null}">
+                                                        <img class="imageLogo img-thumbnail" alt="no image" th:src="@{/images/no-image.png}"></img>
+                                                        <input class="imagePath" type="hidden" name="IMAGE_PATH"></input>
+                                                    </div>
+                                                    <div th:if="${clonedImagePath}">
+                                                        <img class="imageLogo img-thumbnail" alt="no image" th:src="${clonedImagePath}"></img>
+                                                        <input class="imagePath" type="hidden" name="IMAGE_PATH" th:value="${clonedImagePath}"></input>
+                                                    </div>
+                                                    <a type="button" class="btn btn-primary btn-sm " data-toggle="modal" data-target="#chooseAnImage" style="width: 100%">Choose an image</a>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <label class="control-label required" >Name 
+                                                        <span class="text-danger">*</span>
+                                                    </label>
+                                                    <div th:if="${clonedJobDesc == null}">
+                                                        <input type="text" required="required" class="form-control" th:value="${position?.JOB_PROFILE}" name="JOB_PROFILE"></input>
+                                                    </div>
+                                                    <div th:if="${clonedJobDesc}">
+                                                        <input type="text" required="required" class="form-control" th:value="${clonedJobDesc}" name="JOB_PROFILE"></input>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="DEPARTMENT">Department
+                                                    <span class="required"></span>
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <div th:if="${clonedDept == null}">
+                                                        <input type="text" class="form-control col-md-7 col-xs-12" th:value="${position?.DEPARTMENT}" name="DEPARTMENT"></input>
+                                                    </div>
+                                                    <div th:if="${clonedDept}">
+                                                        <input type="text" class="form-control col-md-7 col-xs-12" th:value="${clonedDept}" name="DEPARTMENT"></input>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Support Type
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <div th:if="${clonedSuppType == null}">
+                                                        <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="SUPPORT_TYPE" th:value="${position?.SUPPORT_TYPE}"></input>
+                                                    </div>
+                                                    <div th:if="${clonedSuppType}">
+                                                        <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="SUPPORT_TYPE" th:value="${clonedSuppType}"></input>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Certification</label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <div th:if="${clonedCert == null}">
+                                                        <input class="form-control col-md-7 col-xs-12" type="text" th:value="${position?.CERTIFICATION}" name="CERTIFICATION"></input>
+                                                    </div>
+                                                    <div th:if="${clonedCert}">
+                                                        <input class="form-control col-md-7 col-xs-12" type="text" th:value="${clonedCert}" name="CERTIFICATION"></input>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Description
+                                                    <span class="required"></span>
+                                                </label>
+                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                    <div th:if="${clonedDesc == null}">
+                                                        <textarea class="form-control col-md-7 col-xs-12" type="text" th:text="${position?.DESCRIPTION}" name="DESCRIPTION" rows="4"></textarea>
+                                                    </div>
+                                                    <div th:if="${clonedDesc}">
+                                                        <textarea class="form-control col-md-7 col-xs-12" type="text" th:text="${clonedDesc}" name="DESCRIPTION" rows="4"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Trainings</label>
+                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                    <div th:if="${clonedTrainings == null}">
+                                                        <input id="tags_trainings" type="text" class="tags form-control" th:value="${#strings.replace(position?.TRAININGS, '~',',')}" name="TRAININGS"></input>
+                                                    </div>
+                                                    <div th:if="${clonedTrainings}">
+                                                        <input id="tags_trainings" type="text" class="tags form-control" th:value="${clonedTrainings}" name="TRAININGS"></input>
+                                                    </div>
+                                                    <div id="suggestions-container" style="position: relative; float: left; width: 250px; margin: 10px;"></div>
+                                                </div>
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Workday Job Profile</label>
+                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                    <div th:if="${clonedWorkdayJobProfile == null}">
+                                                        <div style="width: auto;min-height: 100px;height: 100px;border: 1px solid #CCC;background: #FFF;padding: 6px 6px 0;width: 100%;overflow-y: auto;">
+                                                            <input type="text" id="workdayJobProfileInput" data-role="tagsinput" placeholder="Add tags" th:value="${#strings.replace(position?.WORKDAY_JOB_PROFILE, '~',',')}" name="WORKDAY_JOB_PROFILE"></input>
+                                                        </div>
+                                                    </div>
+                                                    <div th:if="${clonedWorkdayJobProfile}">
+                                                        <input type="text" id="workdayJobProfileInput" data-role="tagsinput" placeholder="Add tags" th:value="${clonedWorkdayJobProfile}" name="WORKDAY_JOB_PROFILE"></input>
+                                                    </div>
+                                                    <div id="suggestions-container" style="position: relative; float: left; width: 250px; margin: 10px;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Education
+                                                    <span class="required"></span>
+                                                </label>
+                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                    <div th:if="${clonedEduc == null}">
+                                                        <input type="text" class="form-control col-md-7 col-xs-12" th:value="${position?.EDUCATIONAL_BACKGROUND}" name="EDUCATIONAL_BACKGROUND"></input>
+                                                    </div>
+                                                    <div th:if="${clonedEduc}">
+                                                        <input type="text" class="form-control col-md-7 col-xs-12" th:value="${clonedEduc}" name="EDUCATIONAL_BACKGROUND"></input>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Experience</label>
+                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                    <div th:if="${clonedExp == null}">
+                                                        <input class="form-control col-md-7 col-xs-12" type="text" th:value="${position?.EXPERIENCE_REQUIRED}" name="EXPERIENCE_REQUIRED"></input>
+                                                    </div>
+                                                    <div th:if="${clonedExp}">
+                                                        <input class="form-control col-md-7 col-xs-12" type="text" th:value="${clonedExp}" name="EXPERIENCE_REQUIRED"></input>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Visibility</label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <label th:if="${position?.CATEGORY == 'ST' || position?.CATEGORY == 'DS'}">
+                                                        <input type="checkbox" class="js-switch" checked  name="CATEGORY" id="CATEGORY" value="on"></input>
+                                                        <span id="checkBoxValue">On</span>
+                                                    </label>
+                                                    <label th:if="${(position?.CATEGORY == null || position?.CATEGORY == 'NA') && (position?.CATEGORY != 'DS' && position?.CATEGORY != 'ST')}">
+                                                        <input type="checkbox" class="js-switch"  name="CATEGORY" id="CATEGORY" value="off"></input>
+                                                        <span id="checkBoxValue">Off</span>
+                                                    </label>
+                                                    <span id="checkBoxValue"></span>
+                                                </div>
+                                            </div>
+                                            <script>
+                                                $(document).ready(function(){
+                                                    $("#CATEGORY").click(function(){
+                                                        if($(this).is(":checked")){
+                                                            $("#checkBoxValue").text("On");
+                                                        }
+                                                        else
+                                                            $("#checkBoxValue").text("Off");
+                                                    });
+                                                });
+                                            </script>
+                                            -->
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Category</label>
+                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                    <div th:if="${clonedCategory == null}">
+                                                        <select class="form-control col-md-7 col-xs-12" name="CATEGORY" style="width: 100%">
+                                                            <option value="DS">Active for Digital Services</option>
+                                                            <option value="ST">Active for Support Role</option>
+                                                            <option value="NA">Inactive</option>
+                                                        </select>
+                                                    </div>
+                                                    <div th:if="${clonedCategory}">
+                                                        <div th:if="${clonedCategory == 'DS'}">
+                                                            <select class="form-control col-md-7 col-xs-12" name="CATEGORY" style="width: 100%">
+                                                                <option value="DS" selected>Active for Digital Services</option>
+                                                                <option value="ST">Active for Support Role</option>
+                                                                <option value="NA">Inactive</option>
+                                                            </select>
+                                                        </div>
+                                                        <div th:if="${clonedCategory == 'ST'}">
+                                                            <select class="form-control col-md-7 col-xs-12" name="CATEGORY" style="width: 100%">
+                                                                <option value="DS">Active for Digital Services</option>
+                                                                <option value="ST" selected>Active for Support Role</option>
+                                                                <option value="NA">Inactive</option>
+                                                            </select>
+                                                        </div>
+                                                        <div th:if="${clonedCategory == 'NA' || clonedCategory == null}">
+                                                            <select class="form-control col-md-7 col-xs-12" name="CATEGORY" style="width: 100%">
+                                                                <option value="DS">Active for Digital Services</option>
+                                                                <option value="ST">Active for Support Role</option>
+                                                                <option value="NA" selected>Inactive</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Job Requisition</label>
+                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                    <div th:if="${clonedJobReq == null}">
+                                                        <input class="form-control col-md-7 col-xs-12" type="text" name="JOB_REQ" th:value="${position?.JOB_REQ}"></input>
+                                                    </div>
+                                                    <div th:if="${clonedJobReq}">
+                                                        <input class="form-control col-md-7 col-xs-12" type="text" name="JOB_REQ" th:value="${clonedJobReq}"></input>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Skills</label>
+                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                    <div th:if="${clonedSkills == null}">
+                                                        <input id="tags_skills" type="text" class="tags form-control" th:value="${#strings.replace(position?.SKILLS_REQUIRED, '~',',')}" name="SKILLS_REQUIRED"></input>
+                                                    </div>
+                                                    <div th:if="${clonedSkills}">
+                                                        <input id="tags_skills" type="text" class="tags form-control" th:value="${clonedSkills}" name="SKILLS_REQUIRED"></input>
+                                                    </div>
+                                                    <div id="suggestions-container" style="position: relative; float: left; width: 250px; margin: 10px;"></div>
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Other Skills</label>
+                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                    <div th:if="${clonedOtherSkills == null}">
+                                                        <input id="tags_1" type="text" class="tags form-control" th:value="${#strings.replace(position?.OTHER_SKILLS, '~',',')}" name="OTHER_SKILLS"></input>
+                                                    </div>
+                                                    <div th:if="${clonedOtherSkills}">
+                                                        <input id="tags_1" type="text" class="tags form-control" th:value="${clonedOtherSkills}" name="OTHER_SKILLS"></input>
+                                                    </div>
+                                                    <div id="suggestions-container" style="position: relative; float: left; width: 250px; margin: 10px;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ln_solid"></div>
+                                    <div class="form-group">
+                                        <div class="col-md-12 col-sm-12 col-xs-12 text-left">
+                                            <button type="submit" class="createBtn btn btn-success">Create</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Content - Per Id -->
+                <script type="text/javascript">
+                    /* Removes spaces between tags */
+                    $('.createBtn').click(function(){
+                        var workdayJobProfiles = $('#workdayJobProfileInput').val().trim();
+                        workdayJobProfiles = workdayJobProfiles.replace(/\s*,\s*/g, ",");
+                        $('#workdayJobProfileInput').val(workdayJobProfiles);
+                    });
+                </script>
+            </div>
+            <!--div.main-content-->
+            <div class="clearfix"></div>
+        </div>
+        <!--div.right-col-->
+        <!-- /page content -->
+        <div th:replace="fragments/modals/chooseimage"></div>
+    </div>
+</div>
+<div th:insert="pages/admin :: footer"></div>
+<div th:insert="pages/fragments/admin_foot"></div>

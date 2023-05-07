@@ -1,0 +1,124 @@
+.result-background{
+    min-height: 91.5vh; 
+	padding: 0;
+	padding-top: 5%;
+}
+.retake-quiz{
+    color: #248700;
+}
+.retake-quiz:hover{
+	text-decoration: none;
+	color: #248700;
+	opacity: 0.8;
+}
+
+.result-container{
+	min-height: 30vh;
+	margin: 1rem 0 0 0;
+}
+.result-container .result-carousel{
+	margin-left: 10%;
+	margin-right: 10%;
+}
+.result-card{
+	border-radius: 0;
+	border: 1px solid rgba(0,0,0,0.6);
+	box-shadow: 1px 1px 10px 1px black;
+	outline-color: #4B286D;
+	background-color: white;
+	margin-left: 1%;
+	margin-right: 1%;
+	transition: 0.3s;
+	
+}
+.result-card .result-top-content{
+	margin: 0;
+}
+.result-card .result-carousel-image{
+	padding: 0;
+}
+.result-card .result-carousel-image img{
+	border: 1px solid rgba(0,0,0,0.3);
+	box-shadow: 1px 1px 1px black;
+	padding: 0;
+	border-radius: 0;
+	height: 124px;
+	width: 100%;
+}
+.result-card .result-carousel-title{
+	padding: 0 1rem;
+}
+.result-card .result-carousel-subtitle *{
+	font-size: 0.9rem;
+	margin: auto auto 0.3rem auto;
+}
+
+.result-card .result-body{
+	padding-top: 1rem; 
+	padding-bottom: 0; 
+}
+
+.result-sub-desc {
+	padding: 1%;
+	border-bottom: 4px solid rgba(0,0,0,0.8);
+	margin: 1rem 0 0 0;
+}
+.result-card a{
+	font-size: .9rem;
+	color: #248700;
+}
+.result-card a:hover{
+	text-decoration: underline;
+	color: #248700;
+	opacity: 0.8;
+}
+
+.card-text.result-sub-desc-text{
+	text-align: justify; 
+	margin: 3% 0; 
+	overflow-wrap: break-word; 
+	white-space: normal; 
+	text-overflow: clip;
+	font-size: 0.9rem;
+	
+}
+.slick-prev{
+	left: -15vh !important;
+	width: 10vh !important;
+	height: 10vh !important;
+	opacity: 0.5;
+	transition: 0.3s;
+}
+.slick-next{
+	right: -15vh !important;
+	width: 10vh !important;
+	height: 10vh !important;
+	opacity: 0.5;
+	transition: 0.3s;
+}
+.slick-prev:hover,.slick-next:hover{
+	opacity: 1;
+	transition: 0.3s;
+}
+
+.slick-slide{
+	height: auto !important;
+	margin-bottom: 1rem;
+}
+
+.row.no-matched-result{
+	background-color:white;
+	padding: 5vh 15vh;
+}
+
+.row.no-matched-result .no-matched-result-text{
+	padding: 10vh 0;
+	text-align: center;
+}
+
+.row.no-matched-result .no-matched-result-image{
+	text-align: center;
+}
+.row.no-matched-result .no-matched-result-image img{
+	height: 60vh;
+}

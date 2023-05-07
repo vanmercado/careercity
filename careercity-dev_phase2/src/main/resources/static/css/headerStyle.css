@@ -1,0 +1,33 @@
+
+#navigation{
+	position: absolute;
+	z-index:100;
+	text
+}
+.navbar-header img{
+	padding: 0;
+	height: 4rem;
+}
+.navbar.navbar-expand-lg{
+	padding: 0;
+}
+.nav-link{
+	padding: 20px;
+	color: #66CC00;
+}
+.nav-link:hover{
+	color: #66CC00;
+	opacity: 0.8;
+	transition: 0.3s;
+}
+
+.page-title-main{
+ 	color: #fff;
+ 	background-color: #4B286D;
+ 	text-align:center;
+ 	padding: 0.5rem 1rem;
+ 	max-height: 3.5rem;
+}
+.page-title-main h2{
+ 	font-size: 1.5rem;
+}

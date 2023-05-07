@@ -1,0 +1,286 @@
+<div class="modal fade" id="addaccountmapmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #4b286d; color: white; display: block">
+                <div style="display: inline-block; float: left">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        <strong th:text="${mapdetails.ACCOUNT_NAME}"></strong>
+                    </h5>
+                </div>
+                <div style="display: inline-block; float: right">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <form class="addMappingForm" th:action="@{/addaccountanswers}" method="post">
+                    <span></span>
+                    <input type=hidden id="ACCOUNT_ID" name="ACCOUNT_ID" th:value="${mapdetails.ACCOUNT_ID}"></input>
+                    <br/>
+                    <div class="row">
+                        <div class="accountQuestionDiv col-sm-6 col-xs-6" style="margin: 0; padding: 0">
+                            <select id="accountQuestion" class="form-control" name="question" multiple style="height: 240px">
+                                <option selected>------------------------------ Select Question ------------------------------</option>
+                                <option th:each="question : ${questionList}" th:value="${question.QUESTION_ID}" th:text="${question.QUESTION}">
+                            </select>
+                        </div>
+                        <div class="accountAnswerDiv col-sm-6 col-xs-6" style="margin: 0; padding: 0"></div>
+                    </div>
+                    <!--
+                    <input type="radio" name="question" value="1"></input>
+                    Preferred Site Location<br/> 
+                    <select class="form-control" name="answer">
+                        <option value="1">Araneta</option>
+                        <option value="2">Discovery</option>
+                        <option value="3">Market Market / GoVo</option>
+                        <option value="4">McKinley Exchange</option>
+                        <option value="5">McKinley West</option>
+                    </select><br/><br/>
+                    <input type="radio" name="question" value="2"></input>
+                    Preferred Type of Work (CCO)<br/>
+                    <select class="form-control" name="answer">
+                        <option value="6">Customer Service</option>
+                        <option value="7">Technical Support</option>
+                        <option value="8">Sales</option>
+                    </select>
+                    <select class="form-control" name="question">
+                        <option value="1">Preferred Site Location</option>
+                        <option value="2">Preferred Type of Work (CCO)</option>
+                        <option value="5">Preferred Work Schedule</option>
+                        <option value="6">Educational Background</option>
+                        <option value="7">Field of Study</option>
+                        <option value="8">BPO Experience (Duration)</option>
+                        <option value="9">BPO Experience (Type)</option>
+                        <option value="10">Additional Skills (General)</option>
+                        <option value="11">Additional Skills (Basic Troubleshooting)</option>
+                        <option value="12">Additional Skills (Information Technology)</option>
+                    </select><br/>
+                    <select class="form-control" name="answer">
+                        <option value="1">Araneta</option>
+                        <option value="2">Discovery</option>
+                        <option value="3">Market Market / GoVo</option>
+                        <option value="4">McKinley Exchange</option>
+                        <option value="5">McKinley West</option>
+                        <option value="6">Customer Service</option>
+                        <option value="7">Technical Support</option>
+                        <option value="8">Sales</option>
+                        <option value="24">Shift starts between 3AM to 10:59AM</option>
+                        <option value="25">Shift starts between 11AM to 5:59PM</option>
+                        <option value="26">Shift starts between 6PM to 2:59AM</option>
+                        <option value="27">Weekends off</option>
+                        <option value="28">Any</option>
+                        <option value="29">Completed 2 years in college</option>
+                        <option value="30">Vocational course graduate</option>
+                        <option value="31">College graduate of any 4-year course</option>
+                        <option value="32">Accounting / Finance</option>
+                        <option value="33">Information Technology</option>
+                        <option value="34">Industrial Engineering / Math / Statistics</option>
+                        <option value="35">Communications / Journalism / Marketing</option>
+                        <option value="36">Medical-Related</option>
+                        <option value="37">Less than 6 months</option>
+                        <option value="38">6 months to 1 year</option>
+                        <option value="39">1 to 2 years</option>
+                        <option value="40">More than 3 years</option>
+                        <option value="41">Customer Service</option>
+                        <option value="43">Technical Support</option>
+                        <option value="45">Sales - Inbound</option>
+                        <option value="46">Upselling</option>
+                        <option value="47">Proficient in Business Productivity Software (MS Word, Excel, Powerpoint, etc.)</option>
+                        <option value="48">Basic Internet Network / Internet Connectivity</option>
+                        <option value="49">Computer Parts / Peripherals</option>
+                        <option value="50">Mobile Devices</option>
+                        <option value="51">Email Configuration</option>
+                        <option value="52">Scripting Knowledge</option>
+                        <option value="53">Knowledgeable in cloud technologies</option>
+                        <option value="54">Knowledgeable in Windows operating system</option>
+                        <option value="55">Knowledgeable in Mac operating system</option>
+                        <option value="56">Sales - Outbound</option>
+                        <option value="58">Financial</option>
+                        <option value="60">Others</option>
+                        <option value="61">Health Care</option>
+                    </select><br/>
+                    <input type="number" id="accountmappingid" name="ACCOUNT_ID"><br/>
+                    <br/><input type="number" name="question"><br/>
+                    <br/><input type="number" name="answer"><br/>
+                    <br/><input type="submit" class="btn btn-success">
+                    -->
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="addBtn" type="submit" class="btn btn-success">Add Mapping</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+$(document).ready(function(){
+
+    $.ajax({
+        type: "GET",
+        url: "../getaccountanswerlist",
+        contentType: "application/json; charset=utf-8",
+        dataType: 'json',
+        success: function(data){
+            getData(data);
+        },
+        error: function(err){
+            err.responseText;
+        }
+    });
+
+    function getData(data){
+
+        var siteList = [];
+        var ccoList = [];
+        var tidsList = [];
+        var supportList = [];
+        var schedList = [];
+        var educList = [];
+        var fieldList = [];
+        var durationList = [];
+        var typeList = [];
+        var    generalList = [];
+        var basicList = [];
+        var itList = [];
+        
+        $.each(data, function(k,v){
+            if(v.question_ID == 1){
+                siteList.push({'answerId': v.answer_ID, 'answerText': v.answer});
+            }
+            if(v.question_ID == 2){
+                ccoList.push({'answerId': v.answer_ID, 'answerText': v.answer});
+            }
+            if(v.question_ID == 3){
+                tidsList.push({'answerId': v.answer_ID, 'answerText': v.answer});
+            }
+            if(v.question_ID == 4){
+                supportList.push({'answerId': v.answer_ID, 'answerText': v.answer});
+            }
+            if(v.question_ID == 5){
+                schedList.push({'answerId': v.answer_ID, 'answerText': v.answer});
+            }
+            if(v.question_ID == 6){
+                educList.push({'answerId': v.answer_ID, 'answerText': v.answer});
+            }
+            if(v.question_ID == 7){
+                fieldList.push({'answerId': v.answer_ID, 'answerText': v.answer});
+            }
+            if(v.question_ID == 8){
+                durationList.push({'answerId': v.answer_ID, 'answerText': v.answer});
+            }
+            if(v.question_ID == 9){
+                typeList.push({'answerId': v.answer_ID, 'answerText': v.answer});
+            }
+            if(v.question_ID == 10){
+                generalList.push({'answerId': v.answer_ID, 'answerText': v.answer});
+            }
+            if(v.question_ID == 11){
+                basicList.push({'answerId': v.answer_ID, 'answerText': v.answer});
+            }
+            if(v.question_ID == 12){
+                itList.push({'answerId': v.answer_ID, 'answerText': v.answer});
+            }
+        });
+        
+        
+        $('select#accountQuestion').change(function(){
+
+            $('.accountAnswerDiv').empty();
+
+            if($(this).val() == 1){
+                $('.accountAnswerDiv').append("<select class='accountAnswerSelect form-control' name='answer' multiple style='height: 240px'> </select>");
+                for(var i=0; i<siteList.length; i++){
+                    $('.accountAnswerSelect').append("<option value='"+siteList[i].answerId+"'>"+siteList[i].answerText+"</option>")
+                }
+            }
+            
+            if($(this).val() == 2){
+                $('.accountAnswerDiv').append("<select class='accountAnswerSelect form-control' name='answer' multiple style='height: 240px'> </select>");
+                for(var i=0; i<ccoList.length; i++){
+                    $('.accountAnswerSelect').append("<option value='"+ccoList[i].answerId+"'>"+ccoList[i].answerText+"</option>")
+                }
+            }
+            
+            if($(this).val() == 3){
+                $('.accountAnswerDiv').append("<select class='accountAnswerSelect form-control' name='answer' multiple style='height: 240px'> </select>");
+                for(var i=0; i<tidsList.length; i++){
+                    $('.accountAnswerSelect').append("<option value='"+tidsList[i].answerId+"'>"+tidsList[i].answerText+"</option>")
+                }
+            }
+            
+            if($(this).val() == 4){
+                $('.accountAnswerDiv').append("<select class='accountAnswerSelect form-control' name='answer' multiple style='height: 240px'> </select>");
+                for(var i=0; i<supportList.length; i++){
+                    $('.accountAnswerSelect').append("<option value='"+supportList[i].answerId+"'>"+supportList[i].answerText+"</option>")
+                }
+            }
+            
+            if($(this).val() == 5){
+                $('.accountAnswerDiv').append("<select class='accountAnswerSelect form-control' name='answer' multiple style='height: 240px'> </select>");
+                for(var i=0; i<schedList.length; i++){
+                    $('.accountAnswerSelect').append("<option value='"+schedList[i].answerId+"'>"+schedList[i].answerText+"</option>")
+                }
+            }
+            
+            if($(this).val() == 6){
+                $('.accountAnswerDiv').append("<select class='accountAnswerSelect form-control' name='answer' multiple style='height: 240px'> </select>");
+                for(var i=0; i<educList.length; i++){
+                    $('.accountAnswerSelect').append("<option value='"+educList[i].answerId+"'>"+educList[i].answerText+"</option>")
+                }
+            }
+            
+            if($(this).val() == 7){
+                $('.accountAnswerDiv').append("<select class='accountAnswerSelect form-control' name='answer' multiple style='height: 240px'> </select>");
+                for(var i=0; i<fieldList.length; i++){
+                    $('.accountAnswerSelect').append("<option value='"+fieldList[i].answerId+"'>"+fieldList[i].answerText+"</option>")
+                }
+            }
+            
+            if($(this).val() == 8){
+                $('.accountAnswerDiv').append("<select class='accountAnswerSelect form-control' name='answer' multiple style='height: 240px'> </select>");
+                for(var i=0; i<durationList.length; i++){
+                    $('.accountAnswerSelect').append("<option value='"+durationList[i].answerId+"'>"+durationList[i].answerText+"</option>")
+                }
+            }
+            
+            if($(this).val() == 9){
+                $('.accountAnswerDiv').append("<select class='accountAnswerSelect form-control' name='answer' multiple style='height: 240px'> </select>");
+                for(var i=0; i<typeList.length; i++){
+                    $('.accountAnswerSelect').append("<option value='"+typeList[i].answerId+"'>"+typeList[i].answerText+"</option>")
+                }
+            }
+            
+            if($(this).val() == 10){
+                $('.accountAnswerDiv').append("<select class='accountAnswerSelect form-control' name='answer' multiple style='height: 240px'> </select>");
+                for(var i=0; i<generalList.length; i++){
+                    $('.accountAnswerSelect').append("<option value='"+generalList[i].answerId+"'>"+generalList[i].answerText+"</option>")
+                }
+            }
+            
+            if($(this).val() == 11){
+                $('.accountAnswerDiv').append("<select class='accountAnswerSelect form-control' name='answer' multiple style='height: 240px'> </select>");
+                for(var i=0; i<basicList.length; i++){
+                    $('.accountAnswerSelect').append("<option value='"+basicList[i].answerId+"'>"+basicList[i].answerText+"</option>")
+                }
+            }
+            
+            if($(this).val() == 12){
+                $('.accountAnswerDiv').append("<select class='accountAnswerSelect form-control' name='answer' multiple style='height: 240px'> </select>");
+                for(var i=0; i<itList.length; i++){
+                    $('.accountAnswerSelect').append("<option value='"+itList[i].answerId+"'>"+itList[i].answerText+"</option>")
+                }
+            }
+
+        });
+
+    }
+
+    $('#addBtn').click(function(){
+        $('.addMappingForm').submit();
+    });
+
+});
+</script>
